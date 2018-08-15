@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+
+body{
+    font-family: 'Ubuntu';
+    background: url("") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: rgb(2, 0, 0);
+
+}
+
+.x {
+    -webkit-user-select: none;
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none; 
+  }
