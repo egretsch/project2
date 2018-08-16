@@ -18,3 +18,56 @@ body{
     -ms-user-select: none;      
     user-select: none; 
   }
+
+.container{
+  height: 100%;
+  width: 100%;
+}
+
+.row{
+ width: 100%;
+}
+
+.col{
+  /* text-align: center; */
+}
+
+.topLeftImage{
+  background-image: url("https://static01.nyt.com/images/2018/08/07/opinion/07oakley-illo/07oakley-illo-thumbStandard.jpg");
+  height: 200px;
+  width: 375px;
+}
+.topLeftTitle{
+  margin: 0px;
+  /* border-bottom: 2px solid black; */
+}
+.topLeftText{
+  margin: 0px;
+}
+
+.topCenterImage{
+  background-image: url("https://static01.nyt.com/images/2018/07/26/science/26ALZHEIMERS-print/26ALZHEIMERS-mediumThreeByTwo440.jpg");
+  height: 200px;
+  width: 225px;
+
+}
+.topCenterTitle{
+  margin: 0px;
+}
+.topCenterText{
+  margin: 0px;
+}
+.topRightImage{
+  background-image: url("https://static01.nyt.com/images/2018/07/22/magazine/22mag-water-image-slide-XZRC/22mag-water-image-slide-XZRC-mediumThreeByTwo440.jpg");
+  height: 200px;
+  width: 300px;
+
+}
+.topRightTitle{
+  margin: 0px;
+}
+.topRightText{
+  margin: 0px;
+}
+
+
