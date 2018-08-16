@@ -3,6 +3,9 @@ var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var path = require('path');
 var methodOverride = require('method-override');
+var request = require('request');
+var fs = require('fs');
+var cheerio = require('cheerio');
 
 
 var app = express();
@@ -18,7 +21,7 @@ app.use(methodOverride('_method'));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars"); 
 
-var routes = require("./controllers/controllers.js");
+var routes = require("./routes/api-routes.js");
 
 app.use(routes);
 
