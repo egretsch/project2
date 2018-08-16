@@ -1,15 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
 
 
 body{
-    font-family: 'Ubuntu';
-    background: url("") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     color: rgb(2, 0, 0);
-
+    font-family: 'Ubuntu', 'Times New Roman', Times, serif;
 }
 
 .x {
@@ -18,3 +13,79 @@ body{
     -ms-user-select: none;      
     user-select: none; 
   }
+
+  .classy{
+    font-family: 'Abril Fatface', 'cursive';
+  }
+
+  .group:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Nav Bar*/
+
+  .mainHeaderWrapper{
+      width: 100%;
+      height: 80px;
+     
+  }
+
+  #mainPageCenterText{
+      font-weight: bolder;
+      font-size: 30px;
+      width: 200px;
+      height: 60px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 80px;
+     
+  }
+
+  #userButton{
+    background: url("../images/user.png");
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    float: right;
+    margin-right: 30px;
+    margin-top: 23px;
+   
+  }
+
+  .navBar{
+      width: 100%;
+      height: 50px;
+      position: sticky;
+      top: 0px;
+      background: rgba(0, 0, 0, 0.877);
+      border-bottom: 3px solid rgba(141, 141, 141, 0.842);
+  }
+
+  .navBarTextWrapper{
+    margin: 0 auto;
+    width: 95px;
+    height: 40px;
+  }
+
+
+  #navBarText1{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+  }
+
+   /* Nav Bar*/
+
+   #emptySpace{
+       height: 1500px;
+       width: 100%;
+   }
+
+#whiteSpace{
+    width: 100%;
+    height: 1500px;
+}
