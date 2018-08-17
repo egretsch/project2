@@ -29,7 +29,7 @@ function capture(result, i){
     let apiUrl = result.results[i].url;
 
     $("#nytStuff").append("<img src="+imgArticle+">");
-    $("#nytStuff").append("<a href="++"><h5>"+title+"</h5></a>");
+    $("#nytStuff").append("<a href="+apiUrl+"><h5>"+title+"</h5></a>");
     $("#nytStuff").append("<p>"+about+"</p>");
     $("#nytStuff").append("<p>"+author+"</p>");
 };
