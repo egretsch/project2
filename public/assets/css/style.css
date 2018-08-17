@@ -1,15 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
 
 
 body{
-    font-family: 'Ubuntu';
-    background: url("") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     color: rgb(2, 0, 0);
-
+    font-family: 'Ubuntu', 'Times New Roman', Times, serif;
 }
 
 .x {
@@ -19,6 +14,87 @@ body{
     user-select: none; 
   }
 
+  .classy{
+    font-family: 'Abril Fatface', 'cursive';
+  }
+
+  .group:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Nav Bar*/
+
+  .mainHeaderWrapper{
+      width: 100%;
+      height: 80px;
+     
+  }
+
+  #mainPageCenterText{
+      font-weight: bolder;
+      font-size: 30px;
+      width: 200px;
+      height: 60px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 80px;
+     
+  }
+
+  #userButton{
+    background: url("../images/user.png");
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    float: right;
+    margin-right: 30px;
+    margin-top: 23px;
+   
+  }
+
+  .navBar{
+      width: 100%;
+      height: 50px;
+      position: sticky;
+      top: 0px;
+      background: rgba(0, 0, 0, 0.877);
+      border-bottom: 3px solid rgba(141, 141, 141, 0.842);
+  }
+
+  .navBarTextWrapper{
+    margin: 0 auto;
+    width: 95px;
+    height: 40px;
+  }
+
+
+  #navBarText1{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+  }
+
+   /* Nav Bar*/
+
+   #emptySpace{
+       height: 1500px;
+       width: 100%;
+   }
+
+#whiteSpace{
+    width: 100%;
+    height: 1500px;
+}
+
+.articleWrapper{
+    background: red;
+
+}
+
 .container{
   height: 100%;
   width: 100%;
@@ -26,10 +102,12 @@ body{
 
 .row{
  width: 100%;
+ margin-top: 25px;
 }
 
-.col{
-  /* text-align: center; */
+.s1{
+  border: 1px solid black;
+  text-align: center;
 }
 
 .topLeftImage{
@@ -39,10 +117,11 @@ body{
 }
 .topLeftTitle{
   margin: 0px;
-  /* border-bottom: 2px solid black; */
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid black;
 }
 .topLeftText{
-  margin: 0px;
+  margin: 5px 0px;
 }
 
 .topCenterImage{
@@ -53,9 +132,11 @@ body{
 }
 .topCenterTitle{
   margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid black;
 }
 .topCenterText{
-  margin: 0px;
+  margin: 5px 0px;
 }
 .topRightImage{
   background-image: url("https://static01.nyt.com/images/2018/07/22/magazine/22mag-water-image-slide-XZRC/22mag-water-image-slide-XZRC-mediumThreeByTwo440.jpg");
@@ -65,9 +146,15 @@ body{
 }
 .topRightTitle{
   margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid black;
 }
 .topRightText{
-  margin: 0px;
+  margin: 5px 0px;
+}
+
+.card{
+  
 }
 
 
