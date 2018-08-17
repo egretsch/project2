@@ -44,7 +44,7 @@ body{
   }
 
   #userButton{
-    background: url("../images/user.png");
+    /* background: url("../images/user.png"); */
     background-size: cover;
     width: 40px;
     height: 40px;
@@ -53,6 +53,7 @@ body{
     margin-top: 23px;
    
   }
+ /* Nav Bar*/
 
   .navBar{
       width: 100%;
@@ -60,7 +61,7 @@ body{
       position: sticky;
       top: 0px;
       background: rgba(0, 0, 0, 0.877);
-      border-bottom: 3px solid rgba(141, 141, 141, 0.842);
+      /* border-bottom: 3px solid rgba(141, 141, 141, 0.842); */
   }
 
   .navBarTextWrapper{
@@ -77,39 +78,64 @@ body{
     text-align: center;
     color: white;
   }
+/* Shadow  */
+
+  .navBar{
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  }
+.navBar:before, .navBar:after{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 150px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 150 rgba(0,0,0,0.8);
+    box-shadow:0 0 200px rgba(0,0,0,0.8);
+    top:0;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.navBar:after{
+    right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+}
 
    /* Nav Bar*/
 
-   #emptySpace{
-       height: 1500px;
-       width: 100%;
-   }
-
-#whiteSpace{
-    width: 100%;
-    height: 1500px;
-}
-
-.articleWrapper{
-    background: red;
-
-}
-
-.container{
-  height: 100%;
-  width: 100%;
-}
-
+/* .container{
+  
+} */
+/* All ROWS */
 .row{
- width: 100%;
+ min-width: 1008px;
  margin-top: 25px;
 }
+/* All ROWS */
 
 .s1{
   border: 1px solid black;
   text-align: center;
 }
 
+/* Top Left Articles */
+.sectionOneColOne{
+  max-width: 375px;
+}
+.sectionOneColTwo{
+  max-width: 225px;
+}
+.sectionOneColThree{
+  max-width: 300px;
+}
 .topLeftImage{
   background-image: url("https://static01.nyt.com/images/2018/08/07/opinion/07oakley-illo/07oakley-illo-thumbStandard.jpg");
   height: 200px;
@@ -123,7 +149,9 @@ body{
 .topLeftText{
   margin: 5px 0px;
 }
+/* Top Left Articles */
 
+/* Top Center Articles */
 .topCenterImage{
   background-image: url("https://static01.nyt.com/images/2018/07/26/science/26ALZHEIMERS-print/26ALZHEIMERS-mediumThreeByTwo440.jpg");
   height: 200px;
@@ -138,11 +166,13 @@ body{
 .topCenterText{
   margin: 5px 0px;
 }
+/* Top Center Articles */
+
+/* Top Right Articles */
 .topRightImage{
   background-image: url("https://static01.nyt.com/images/2018/07/22/magazine/22mag-water-image-slide-XZRC/22mag-water-image-slide-XZRC-mediumThreeByTwo440.jpg");
   height: 200px;
   width: 300px;
-
 }
 .topRightTitle{
   margin: 0px;
@@ -152,9 +182,4 @@ body{
 .topRightText{
   margin: 5px 0px;
 }
-
-.card{
-  
-}
-
-
+/* Top Right Articles */

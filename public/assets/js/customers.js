@@ -10,18 +10,26 @@ function nytArticles() {
         method: 'GET',
     }).done(function (result) {
         console.log(result);
+        for (let i = 0; i < result.results.length; i++) {
+            capture(result, i);
+        }
     }).fail(function (err) {
         throw err;
     });
 };
 
+
 nytArticles();
 
-// function test(){
-//     for (let i = 0; i < .length; i++) {
-//         const element = [i];
+function capture(result, i){
+    let imgArticle = result.results[i].media[0]["media-metadata"][2].url;
+    let title = result.results[i].title;
+    let about = result.results[i].abstract;
+    let author = result.results[i].byline;
+    let apiUrl = result.results[i].url;
 
-//     }
-// };
-
-
+    $("#nytStuff").append("<img src="+imgArticle+">");
+    $("#nytStuff").append("<a href="++"><h5>"+title+"</h5></a>");
+    $("#nytStuff").append("<p>"+about+"</p>");
+    $("#nytStuff").append("<p>"+author+"</p>");
+};
