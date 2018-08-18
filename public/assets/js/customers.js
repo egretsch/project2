@@ -1,6 +1,4 @@
-let arr = [];
-
-console.log("test");
+// console.log("test");
 function nytArticles() {
     let url = "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/30.json";
     url += '?' + $.param({
@@ -10,7 +8,7 @@ function nytArticles() {
         url: url,
         method: 'GET',
     }).done(function (result) {
-        console.log(result);
+        // console.log(result);
         for (let i = 0; i < result.results.length; i++) {
             if (i === 0) {
                 capture(result, i, $("#sectionOne"));
@@ -24,16 +22,17 @@ function nytArticles() {
                 capture(result, i, $("#nytStuff"));
             }
         }
+        console.log(result);
     }).fail(function (err) {
         throw err;
     });
 };
  
 $(document).ready(function () {
- $('.dropdown-trigger').dropdown();
+ 
+    $('.dropdown-trigger').dropdown();
  
 });
-
 
 nytArticles();
 
