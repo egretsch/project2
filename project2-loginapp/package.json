@@ -1,0 +1,24 @@
+{
+  "name": "project2-loginapp",
+  "version": "1.0.0",
+  "description": "user login",
+  "main": "index.js",
+  "scripts": {
+    "test": "app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/egretsch/project2.git"
+  },
+  "keywords": [
+    "login"
+  ],
+  "author": "Tyler",
+  "license": "ISC",
+  "dependencies": {
+    "cli": "^1.0.1",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.1",
+    "sequelize": "^4.38.0"
+  }
+}
