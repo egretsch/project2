@@ -1,3 +1,5 @@
+let arr = [];
+
 console.log("test");
 function nytArticles() {
     let url = "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/30.json";
@@ -42,12 +44,32 @@ function capture(result, i, location) {
     let author = result.results[i].byline;
     let apiUrl = result.results[i].url;
 
-    let div = $("<a id='articleLink' href=" + apiUrl + ">")
+
+    let div = $("<a id='articleLink' href='/article'>");
     div.append("<h5 class='nytTitle'>" + title + "</h5>");
     div.append("<img class='nytImage' src=" + imgArticle + ">");
     div.append("<p class='nytText'>" + about + "</p>");
     div.append("<p class='nytAuthor'>" + author + "</p>");
 
     location.append(div);
+
+    $(div).on("click", function(){
+        console.log(title);
+
+        let newArticle = {
+            image: imgArticle,
+            title: title,
+            about: about,
+            author: author,
+            apiUrl: apiUrl
+        };
+
+        console.log(newArticle);
+
+        $.post("/article", newArticle, function(data){
+            
+        });
+
+        });
 
 };
