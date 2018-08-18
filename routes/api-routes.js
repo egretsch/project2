@@ -1,37 +1,47 @@
 var express = require('express');
 var router = express.Router();
 var scrapedNewYorTimesInfo = require ("../app/storedArticlesApi.js");
+var request = require('request');
+var cheerio = require('cheerio');
+
 
 router.get('/', function(req,res){
         res.render("index");
 })
 
 router.get('/article', function(req,res){
-    res.render("article");
-})
+    var url = "https://www.nytimes.com/2018/08/15/us/politics/transgender-christine-hallquist-vermont.html?hp&action=click&pgtype=Homepage&clickSource=story-heading&module=photo-spot-region&region=top-news&WT.nav=top-news"
 
-router.get('/api/articles', function (req, res){
-    res.json(scrapedNewYorTimesInfo);
-});
 
-router.get('/articlesUrl', function (req, res){
-    
     request(url, function(err, resp, body){
+        // console.log(body);
         var $ = cheerio.load(body);
         var pTag = $('p');
         var thing = pTag.text();
-    
-        console.log(thing);
-    
+       res.render("article" , { 
+           data : thing
+       });
     
     })
-  
-    router.post('/api/articles', function (req, res){
-    
-    
-    });
-});
+})
+
 
 
 
 module.exports = router;
+
+let thing;
+
+hunter();
+chance();
+
+
+
+function hunter(thing){
+    thing = "bobby";
+
+}
+
+function chance(){
+    console.log(thing);
+}
