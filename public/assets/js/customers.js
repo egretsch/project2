@@ -26,6 +26,11 @@ function nytArticles() {
         throw err;
     });
 };
+ 
+$(document).ready(function () {
+ $('.dropdown-trigger').dropdown();
+ 
+});
 
 
 nytArticles();

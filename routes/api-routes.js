@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 var scrapedNewYorTimesInfo = require ("../app/storedArticlesApi.js");
 
 router.get('/', function(req,res){
@@ -10,6 +10,10 @@ router.get('/article', function(req,res){
     res.render("article");
 })
 
+router.get('/article/:article', function(req,res){
+    res.render("index");
+})
+
 router.get('/api/articles', function (req, res){
     res.json(scrapedNewYorTimesInfo);
 });
@@ -17,21 +21,17 @@ router.get('/api/articles', function (req, res){
 router.get('/articlesUrl', function (req, res){
     
     request(url, function(err, resp, body){
-        var $ = cheerio.load(body);
-        var pTag = $('p');
-        var thing = pTag.text();
+        let $ = cheerio.load(body);
+        let pTag = $('p');
+        let thing = pTag.text();
     
         console.log(thing);
-    
-    
-    })
-  
+
+    });
+
     router.post('/api/articles', function (req, res){
-    
     
     });
 });
-
-
 
 module.exports = router;
