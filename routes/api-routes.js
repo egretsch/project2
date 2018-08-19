@@ -12,6 +12,10 @@ router.get('/', function(req,res){
         res.render("index");
 })
 
+router.get('/posting', function(req,res){
+    res.render("posting");
+})
+
 router.get('/article', function(req,res){
 
 
