@@ -2,9 +2,10 @@ const express = require('express');
 const request = require('request');
 var cheerio = require('cheerio');
 const router = express.Router();
-let scrapedNewYorTimesInfo = require ("../app/storedArticlesApi.js");
+let obj;
 
-let url;
+
+
 
 
 router.get('/', function(req,res){
@@ -15,30 +16,50 @@ router.get('/article', function(req,res){
 
 
     
-    request(url, function(err, resp, body){
-        let $ = cheerio.load(body);
-        let pTag = $('p');
-        let thing = pTag.text();
-    
-        console.log(thing);
+    request(obj.apiUrl, function(err, resp, body){
 
-        res.render("article", {data: thing});
+        let $ = cheerio.load(body);
+
+        let tag1 = $('.e2kc3sl0');
+        let tag1Text = tag1.text();
+
+        let tag2 = $('.g-body');
+        let tag2Text = tag2.text();
+
+        let tag3 = $(".story-content");
+        let tag3Text = tag3.text();
+        let thing;
+
+        let allTheTags = [];
+
+        allTheTags.push(tag1Text);
+        allTheTags.push(tag2Text);
+        allTheTags.push(tag3Text);
+        console.log(allTheTags);
+
+        for (let i = 0; i < allTheTags.length; i++) {
+            if(allTheTags[i].length === 0){
+                console.log(allTheTags[i] + "This tag sucks and is empty")
+            }else{
+                thing = allTheTags[i]
+                sendingInfo(thing);
+            }
+            
+        }
+
+        function sendingInfo(thing){
+            res.render("article", {data: thing, obj});
+
+        }
+
 
     });
 });
 
 router.post("/article", function(req, res){
-    
-   url = req.body.apiUrl;
-
-//    console.log(obj);
-
+ obj = req.body;
 });
 
-
-router.get("/hunter", function(req, res){
-    
-})
 
 
 

@@ -2,7 +2,7 @@ let arr = [];
 
 console.log("test");
 function nytArticles() {
-    let url = "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/30.json";
+    let url = "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/1.json";
     url += '?' + $.param({
         'api-key': "6086b5c73aa24707a614e2ff573a60f9"
     });

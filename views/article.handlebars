@@ -2,30 +2,34 @@
     <a class='dropdown-trigger' id="userButton" href='#' data-target='dropdown1'></a>
     <div id="mainPageCenterText" class="x classy">Paradigm</div>
 </div>
+
 <div class="navBar">
-    <div class="navBarTextWrapper">
-        <a href="/" id="navBarText1" class="x">Main Page</a>
-    </div>
-</div>
+    <nav>
+        <div class="nav-wrapper navBar">
+            <a href="/" id="navBarText1" class="brand-logo center x">News Feed</a>
+
+        </div>
+    </nav>
+
 <div class="articleWrapper">
     <div class="row">
         <div class="col s4"></div>
-        <img class="col s4" src="" id="articleImg">
+        <img class="col s4" src="{{obj.image}}" id="articleImg">
         <div class="col s4"></div>
     </div>
     <div class="row">
         <div class="col s2"></div>
-        <h1 class="col s8" id="articleHeader"></h1>
+        <h1 class="col s8" id="articleHeader">{{obj.title}}</h1>
         <div class="col s2"></div>
     </div>
     <div class="row">
         <div class="col s8"></div>
-        <p class="col s2" id="author"></p>
+        <p class="col s2" id="author">{{obj.author}}</p>
         <div class="col s2"></div>
     </div>
     <div class="row">
         <div class="col s2"></div>
-        <div class="col s8">{{data}}</div>
+        <div class="col s8 articleText">{{data}}</div>
         <div class="col s2"></div>
     </div>
 </div>
