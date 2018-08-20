@@ -6,7 +6,7 @@ var methodOverride = require('method-override');
 var request = require('request');
 var fs = require('fs');
 var cheerio = require('cheerio');
-
+var db = require("./models/index.js");
 
 var app = express();
 app.use(express.static(__dirname + "/public"));
@@ -27,6 +27,14 @@ app.use(routes);
 
 
 var PORT = process.env.PORT || 8080;
-app.listen(PORT, function () {
-  console.log("Server listening on: http://localhost:" + PORT);
+
+
+
+
+db.sequelize.sync().then(function(){
+  app.listen(PORT, function () {
+    console.log("Server listening on: http://localhost:" + PORT);
+  });
 });
+
+
