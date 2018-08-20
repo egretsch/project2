@@ -11,7 +11,7 @@ var db = require("./models");
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 var PORT = process.env.PORT || 8080;
-let routes = require('./controllers/logedin_controller.js')
+let routes = require('./controllers/loggedincontroller.js')
 
 
 // Serve static content for the app from the "public" directory in the application directory.

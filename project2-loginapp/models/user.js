@@ -1,5 +1,5 @@
-module.exports = function (sequelize, DataTypes) {
-    var UserInfo = sequelize.define("UserInfo", {
+module.exports = function (Sequelize, DataTypes) {
+    var UserInfo = Sequelize.define("UserInfo", {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
