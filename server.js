@@ -5,7 +5,7 @@ var path = require('path');
 var methodOverride = require('method-override');
 var request = require('request');
 var fs = require('fs');
-var cheerio = require('cheerio');
+var db = require("./models/index.js");
 
 
 var app = express();
@@ -25,8 +25,9 @@ var routes = require("./routes/api-routes.js");
 
 app.use(routes);
 
-
+db.sequelize.sync({ force: true }).then(function() {
 var PORT = process.env.PORT || 8080;
 app.listen(PORT, function () {
   console.log("Server listening on: http://localhost:" + PORT);
+});
 });

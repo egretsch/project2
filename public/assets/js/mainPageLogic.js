@@ -39,19 +39,19 @@ function capture(result, i, location) {
     let about = result.results[i].abstract;
     let author = result.results[i].byline;
     let apiUrl = result.results[i].url;
-
-
+    
+    
     let div = $("<a id='articleLink' href='/article'>");
     div.append("<h5 class='nytTitle'>" + title + "</h5>");
     div.append("<img class='nytImage' src=" + imgArticle + ">");
     div.append("<p class='nytText'>" + about + "</p>");
     div.append("<p class='nytAuthor'>" + author + "</p>");
-
+    
     location.append(div);
-
+    
     $(div).on("click", function(){
         console.log(title);
-
+        
         let newArticle = {
             image: imgArticle,
             title: title,
@@ -59,15 +59,15 @@ function capture(result, i, location) {
             author: author,
             apiUrl: apiUrl
         };
-
+        
         console.log(newArticle);
-
+        
         $.post("/article", newArticle, function(data){
             
         });
-
+        
         });
-
+        
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

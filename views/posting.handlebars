@@ -1,69 +1,102 @@
-    <div class="row catagories">
-        <div class="col s4 m2 l2"> </div>
-        <div class="col s4 m2 l2"></div>
-        <a href="/posting">
-        <div class="col s4 m2 l2 x link">Post A New Article</div>
-        </a>
-        <a href="/userarticleslist">
-        <div class="col s4 m2 l2 x link">Manage Your Articles</div>
-        </a>
-        <div class="col s4 m2 l2"></div>
-        <div class="col s4 m2 l2"></div>
-  
-    </div>
+<div class="row catagories">
+  <div class="col s4 m2 l2"> </div>
+  <div class="col s4 m2 l2"></div>
+  <a href="/posting">
+    <div class="col s4 m2 l2 x link">Post A New Article</div>
+  </a>
+  <a href="/userarticleslist">
+    <div class="col s4 m2 l2 x link">Manage Your Articles</div>
+  </a>
+  <div class="col s4 m2 l2"></div>
+  <div class="col s4 m2 l2"></div>
 
-  
+</div>
+
+
 
 
 <div class="row">
-     <div class="col s4"></div>
-    <div id="postingHeader" class="col s4 classy">Post An Idea Worth Sharing</div>
-     <div class="col s4"></div>
+  <div class="col s4"></div>
+  <div id="postingHeader" class="col s4 classy">Post An Idea Worth Sharing</div>
+  <div class="col s4"></div>
 
 </div>
 
 
-           <div class="row">
-               <div class="col s4"></div>
-          <div class="input-field col s4">
-            <input  value="" id="input_text" class="postingArticleTitle" type="text" data-length="120">
-            <label for="input_text">Article Title</label>
-          </div>
-           <div class="col s4"></div>
-        </div>
-
-
-         <div class="row">
-             <div class="col s4"></div>
-          <div class="input-field col s4">
-            <input  value="" id="input_text" class="postingArticleAuthor" type="text" data-length="60">
-            <label for="input_text">Your Author Name</label>
-          </div>
-          <div class="col s4"></div>
-        </div>
-
-          <div class="row">
-               <div class="col s2"></div>
-    <div class="input-field col s8">
-      <input value="" id="postArticleImg" type="text" class="validate">
-      <label class="active" for="postArticleImg">Link For An Article Image</label>
-    </div>
-    <div class="col s2"></div>
+<div class="row">
+  <div class="col s4"></div>
+  <div class="input-field col s4">
+    <input value="" id="input_text" class="postingArticleTitle" type="text" data-length="120">
+    <label for="input_text">Article Title</label>
   </div>
+  <div class="col s4"></div>
+</div>
 
+<div class="row">
+  <div class="col s4"></div>
+  <div class="input-field col s4">
+    <input value="" id="input_text" class="postingArticleSnippet" type="text" data-length="120">
+    <label for="input_text">Article Snippet</label>
+  </div>
+  <div class="col s4"></div>
+</div>
+
+
+<div class="row">
+  <div class="col s4"></div>
+  <div class="input-field col s4">
+    <input value="" id="input_text" class="postingArticleAuthor" type="text" data-length="60">
+    <label for="input_text">Your Author Name</label>
+  </div>
+  <div class="col s4"></div>
+</div>
+
+<div class="row">
+  <div class="col s2"></div>
+  <div class="input-field col s8">
+    <input value="" id="postArticleImg" type="text" class="validate">
+    <label class="active" for="postArticleImg">Link For An Article Image</label>
+  </div>
+  <div class="col s2"></div>
+</div>
+
+<div class="row">
+  <div class="col s1"></div>
+  <form class="col s10">
     <div class="row">
-           <div class="col s1"></div>
-    <form class="col s10">
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea id="postArticleBody" class="materialize-textarea"></textarea>
-          <label for="postArticleBody">Write something worth reading</label>
-        </div>
+      <div class="input-field col s12">
+        <textarea id="postArticleBody" value="" class="materialize-textarea"></textarea>
+        <label for="postArticleBody">Write something worth reading</label>
       </div>
-    </form>
-       <div class="col s1"></div>
-  </div>
+    </div>
+  </form>
+  <div class="col s1"></div>
+</div>
 
 <div class="center-align">
-  <a class="waves-effect waves-light btn-large">Submit</a>
+  <a class="waves-effect waves-light btn-large postingButton">Submit</a>
 </div>
+
+
+<script>
+  $('.postingButton').on("click", function(){
+    console.log("I have been pushed!");
+
+    let postingArticleTitle = $('.postingArticleTitle').val();
+    let postingArticleSnippet = $('.postingArticleSnippet').val();
+    let postingArticleAuthor = $('.postingArticleAuthor').val();
+    let postingArticleImg = $('.postingArticleImg').val();
+    let postingArticleBody = $('.postArticleBody').val();
+    
+    let newUserArticleObj = {
+        title : postingArticleTitle,
+        snippet : postingArticleSnippet,
+        author : postingArticleAuthor,
+        img : postingArticleImg,
+        body : postingArticleBody
+    }
+    
+    console.log(newUserArticleObj);
+})
+
+</script>
