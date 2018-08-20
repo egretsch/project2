@@ -20,6 +20,14 @@ router.get('/posts', function(req,res){
     res.render("posts");
 })
 
+router.get('/bookmarks', function(req,res){
+    res.render("bookmarks");
+})
+
+router.get('/settings', function(req,res){
+    res.render("settings");
+})
+
 router.get('/article', function(req,res){
     
     request(obj.apiUrl, function(err, resp, body){
