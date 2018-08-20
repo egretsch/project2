@@ -39,7 +39,7 @@ router.get('/article', function(req,res){
         allTheTags.push(tag1Text);
         allTheTags.push(tag2Text);
         allTheTags.push(tag3Text);
-        console.log(allTheTags);
+        // console.log(allTheTags);
 
         for (let i = 0; i < allTheTags.length; i++) {
             if(allTheTags[i].length === 0){
