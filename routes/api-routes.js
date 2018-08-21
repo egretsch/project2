@@ -28,27 +28,24 @@ router.get('/bookmarks', function(req,res){
 router.get('/settings', function(req,res){
     res.render("settings");
 });
-<<<<<<< HEAD
-=======
 
-router.get('/userarticle/:authorname/:articlename', function(req,res){
+// router.get('/userarticle/:authorname/:articlename', function(req,res){
 
-    db.Article.findAll({
-        where: {
-          authorname: req.params.author
-        },
-        where: {
-            articlename: req.params.title
-          }
-      })
-        .then(function(dbArticle) {
-          res.send(dbArticle);
-          res.render("userarticles");
-        });
+//     db.Article.findAll({
+//         where: {
+//           authorname: req.params.author
+//         },
+//         where: {
+//             articlename: req.params.title
+//           }
+//       })
+//         .then(function(dbArticle) {
+//           res.send(dbArticle);
+//           res.render("userarticles");
+//         });
     
-});
+// });
 
->>>>>>> 6842b08231fb992313b472ae2bd676f51e2b8a12
 
 router.get('/article/:title', function(req,res){
     
