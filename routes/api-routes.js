@@ -52,7 +52,7 @@ router.get('/userarticle/:id', function (req, res) {
 });
 
 
-router.get('/article', function (req, res) {
+router.get('/article/:title', function (req, res) {
 
     request(obj.apiUrl, function (err, resp, body) {
         let $ = cheerio.load(body);
