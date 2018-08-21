@@ -8,26 +8,44 @@ let obj;
 
 router.get('/', function(req,res){
         res.render("index");
-})
+});
 
 router.get('/posting', function(req,res){
     res.render("posting");
-})
+});
 
 router.get('/posts', function(req,res){
 
     db.Article.findAll().then(function(data){
         res.render("posts", {items: data});
     });
-})
+});
 
 router.get('/bookmarks', function(req,res){
     res.render("bookmarks");
-})
+});
 
 router.get('/settings', function(req,res){
     res.render("settings");
-})
+});
+
+router.get('/userarticle/:authorname/:articlename', function(req,res){
+
+    db.Article.findAll({
+        where: {
+          authorname: req.params.author
+        },
+        where: {
+            articlename: req.params.title
+          }
+      })
+        .then(function(dbArticle) {
+          res.send(dbArticle);
+          res.render("userarticles");
+        });
+    
+});
+
 
 router.get('/article', function(req,res){
     
