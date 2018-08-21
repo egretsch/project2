@@ -14,5 +14,4 @@ $('.delete-button').on("click", function(){
           console.log(response);
           window.location.href = "/posts";
         });
-
 });

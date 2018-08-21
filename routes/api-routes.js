@@ -29,7 +29,7 @@ router.get('/settings', function(req,res){
     res.render("settings");
 });
 
-router.get('/article', function(req,res){
+router.get('/article/:title', function(req,res){
     
     request(obj.apiUrl, function(err, resp, body){
         let $ = cheerio.load(body);
@@ -66,7 +66,6 @@ router.get('/article', function(req,res){
 
         }
 
-
     });
 });
 
@@ -86,19 +85,6 @@ router.post("/articles/add", function(req, res){
         res.send(dbArticle);
     })
 });
-
-// router.post("/articles/add", function(req, res){
-
-//     db.Article.create({
-//         title: req.body.title,
-//         author: req.body.author,
-//         img: req.body.img,
-//         body: req.body.body,
-//         snippet: req.body.snippet
-//     }).then(function(dbArticle){
-//         res.send(dbArticle);
-//     })
-// });
 
 router.delete("/article/delete/:id", function(req, res) {
     db.Article.destroy({
