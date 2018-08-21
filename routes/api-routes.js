@@ -28,6 +28,7 @@ router.get('/bookmarks', function(req,res){
 router.get('/settings', function(req,res){
     res.render("settings");
 });
+<<<<<<< HEAD
 
 router.get('/userarticle/:authorname/:articlename', function(req,res){
 
@@ -46,6 +47,8 @@ router.get('/userarticle/:authorname/:articlename', function(req,res){
     
 });
 
+=======
+>>>>>>> 76e6487df88acb1ca4ac2f1d261de56f4f51e8e2
 
 router.get('/article', function(req,res){
     
