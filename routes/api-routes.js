@@ -6,29 +6,30 @@ var db = require("../models/index.js");
 let obj;
 
 
-router.get('/', function(req,res){
-        res.render("index");
+router.get('/', function (req, res) {
+    res.render("index");
 });
 
-router.get('/posting', function(req,res){
+router.get('/posting', function (req, res) {
     res.render("posting");
 });
 
-router.get('/posts', function(req,res){
+router.get('/posts', function (req, res) {
 
-    db.Article.findAll().then(function(data){
-        res.render("posts", {items: data});
+    db.Article.findAll().then(function (data) {
+        res.render("posts", { items: data });
     });
 });
 
-router.get('/bookmarks', function(req,res){
+router.get('/bookmarks', function (req, res) {
     res.render("bookmarks");
 });
 
-router.get('/settings', function(req,res){
+router.get('/settings', function (req, res) {
     res.render("settings");
 });
 
+<<<<<<< HEAD
 // router.get('/userarticle/:authorname/:articlename', function(req,res){
 
 //     db.Article.findAll({
@@ -50,6 +51,34 @@ router.get('/settings', function(req,res){
 router.get('/article/:title', function(req,res){
     
     request(obj.apiUrl, function(err, resp, body){
+=======
+router.get('/userarticle', function (req, res) {
+    res.render("userarticle");
+});
+
+
+router.get('/userarticle/:id', function (req, res) {
+
+    db.Article.findAll({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(function (dbArticle) {
+            console.log("Something happened on the backend");
+            /* Need to set a new variable for the returned sequelize object because you can't
+            use bracket notation in handlebars */
+            let dbArticleUsable = dbArticle[0];
+            res.render("userarticle", { data: dbArticleUsable });
+        });
+
+});
+
+
+router.get('/article', function (req, res) {
+
+    request(obj.apiUrl, function (err, resp, body) {
+>>>>>>> 45bf28639045a3bc8a5f772507b285bce52a7924
         let $ = cheerio.load(body);
 
         let tag1 = $('.e2kc3sl0');
@@ -70,28 +99,28 @@ router.get('/article/:title', function(req,res){
         console.log(allTheTags);
 
         for (let i = 0; i < allTheTags.length; i++) {
-            if(allTheTags[i].length === 0){
+            if (allTheTags[i].length === 0) {
                 console.log(allTheTags[i] + "This tag sucks and is empty")
-            }else{
+            } else {
                 thing = allTheTags[i]
                 sendingInfo(thing);
             }
-            
+
         }
 
-        function sendingInfo(thing){
-            res.render("article", {data: thing, obj});
+        function sendingInfo(thing) {
+            res.render("article", { data: thing, obj });
 
         }
 
     });
 });
 
-router.post("/article", function(req, res){
- obj = req.body;
+router.post("/article", function (req, res) {
+    obj = req.body;
 });
 
-router.post("/articles/add", function(req, res){
+router.post("/articles/add", function (req, res) {
 
     db.Article.create({
         title: req.body.title,
@@ -99,7 +128,7 @@ router.post("/articles/add", function(req, res){
         img: req.body.img,
         body: req.body.body,
         snippet: req.body.snippet
-    }).then(function(dbArticle){
+    }).then(function (dbArticle) {
         res.send(dbArticle);
     })
 });
