@@ -29,29 +29,6 @@ router.get('/settings', function (req, res) {
     res.render("settings");
 });
 
-<<<<<<< HEAD
-// router.get('/userarticle/:authorname/:articlename', function(req,res){
-
-//     db.Article.findAll({
-//         where: {
-//           authorname: req.params.author
-//         },
-//         where: {
-//             articlename: req.params.title
-//           }
-//       })
-//         .then(function(dbArticle) {
-//           res.send(dbArticle);
-//           res.render("userarticles");
-//         });
-    
-// });
-
-
-router.get('/article/:title', function(req,res){
-    
-    request(obj.apiUrl, function(err, resp, body){
-=======
 router.get('/userarticle', function (req, res) {
     res.render("userarticle");
 });
@@ -78,7 +55,6 @@ router.get('/userarticle/:id', function (req, res) {
 router.get('/article', function (req, res) {
 
     request(obj.apiUrl, function (err, resp, body) {
->>>>>>> 45bf28639045a3bc8a5f772507b285bce52a7924
         let $ = cheerio.load(body);
 
         let tag1 = $('.e2kc3sl0');
