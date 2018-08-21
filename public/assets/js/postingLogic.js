@@ -9,7 +9,7 @@ $('.posting-button').on("click", function(){
     
     let newUserArticleObj = {
         title : postingArticleTitle,
-        snippet : "postingArticleSnippet",
+        snippet : postingArticleSnippet,
         author : postingArticleAuthor,
         img : postingArticleImg,
         body : postingArticleBody

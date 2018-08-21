@@ -20,51 +20,22 @@
 
 
 
-{{#each items}}
+{{!-- {{#each items}}
 <p>{{title}}</p>
 <button data={{id}} class="edit">edit</button>
+{{/each}} --}}
+
+{{#each items}}
+<div class="row">
+    <div class="col s8 offset-s2 hoverable" style="border-bottom: double;">
+        <img src="{{img}}" height="150" width="210" style="float: left; margin: 0px 10px 10px 0px">
+        <h5>{{title}}</h5>
+        <p>{{snippet}}</p>
+        <button data="{{id}}" class="small material-icons hoverable" style="float: right; margin: 5px 5px">delete_forever</button>
+        <button class="small material-icons hoverable" style="float: right; margin: 5px 5px">edit</button>
+    </div>
+</div>
 {{/each}}
-
-
-
-
-
-
-
-
-
-<div class="row">
-    <div class="col s8 offset-s2" style="border-bottom: double;">
-        <img src="https://via.placeholder.com/210x150" style="float: left; margin: 0px 10px 10px 0px">
-        <h5>This is a title for an article that someone wrote</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non est eget risus luctus sollicitudin. Mauris vestibulum
-            ut ante at convallis. In semper vulputate leo, a suscipit nunc auctor ornare. Maecenas hendrerit pulvinar vehicula.</p>
-        <img src="https://via.placeholder.com/30x30" style="float: right; margin: 5px 5px">
-        <img src="https://via.placeholder.com/30x30" style="float: right; margin: 5px 5px">
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s8 offset-s2" style="border-bottom: double;">
-        <img src="https://via.placeholder.com/210x150" style="float: left; margin: 0px 10px 10px 0px">
-        <h5>This is a title for an article that someone wrote</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non est eget risus luctus sollicitudin. Mauris vestibulum
-            ut ante at convallis. In semper vulputate leo, a suscipit nunc auctor ornare. Maecenas hendrerit pulvinar vehicula.</p>
-        <img src="https://via.placeholder.com/30x30" style="float: right; margin: 5px 5px">
-        <img src="https://via.placeholder.com/30x30" style="float: right; margin: 5px 5px">
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s8 offset-s2" style="border-bottom: double;">
-        <img src="https://via.placeholder.com/210x150" style="float: left; margin: 0px 10px 10px 0px">
-        <h5>This is a title for an article that someone wrote</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non est eget risus luctus sollicitudin. Mauris vestibulum
-            ut ante at convallis. In semper vulputate leo, a suscipit nunc auctor ornare. Maecenas hendrerit pulvinar vehicula.</p>
-        <img src="https://via.placeholder.com/30x30" style="float: right; margin: 5px 5px">
-        <img src="https://via.placeholder.com/30x30" style="float: right; margin: 5px 5px">
-    </div>
-</div>
 
 <div class="row">
     <div class="col s8 offset-s2" style="border-bottom: double;">

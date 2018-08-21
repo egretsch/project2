@@ -27,7 +27,7 @@ router.get('/bookmarks', function(req,res){
 
 router.get('/settings', function(req,res){
     res.render("settings");
-})
+});
 
 router.get('/article', function(req,res){
     
