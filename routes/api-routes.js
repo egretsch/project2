@@ -2,10 +2,8 @@ const express = require('express');
 const request = require('request');
 var cheerio = require('cheerio');
 const router = express.Router();
+var db = require("../models/index.js");
 let obj;
-
-
-
 
 
 router.get('/', function(req,res){
@@ -16,12 +14,24 @@ router.get('/posting', function(req,res){
     res.render("posting");
 })
 
+router.get('/posts', function(req,res){
+
+    db.Article.findAll().then(function(data){
+        res.render("posts", {items: data});
+    });
+})
+
+router.get('/bookmarks', function(req,res){
+    res.render("bookmarks");
+})
+
+router.get('/settings', function(req,res){
+    res.render("settings");
+})
+
 router.get('/article', function(req,res){
-
-
     
     request(obj.apiUrl, function(err, resp, body){
-
         let $ = cheerio.load(body);
 
         let tag1 = $('.e2kc3sl0');
@@ -62,6 +72,19 @@ router.get('/article', function(req,res){
 
 router.post("/article", function(req, res){
  obj = req.body;
+});
+
+router.post("/articles/add", function(req, res){
+
+    db.Article.create({
+        title: req.body.title,
+        author: req.body.author,
+        img: req.body.img,
+        body: req.body.body,
+        snippet: req.body.snippet
+    }).then(function(dbArticle){
+        res.send(dbArticle);
+    })
 });
 
 

@@ -100,7 +100,7 @@ body{
 
 /* CHANCE CSS BELOW */
 
-/* Shadow  */
+/* Shadow */
 
 .navBar{
   -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -137,7 +137,7 @@ body{
   margin-top: 25px;
   }
 .catagories{
-  border-top: 1px solid black;
+  /* border-top: 1px solid black; */
 }
 
 .l2{
@@ -157,6 +157,16 @@ body{
 .nytAuthor{
   width: 100%;
   color:black;
+  }
+
+.bLink{
+  text-align: center;
+  font-size: 15px;
+  border-bottom: 1px solid black;
+}
+.bLink:hover{
+  background:rgba(0, 0, 0, .9);
+  color: white;
   }
 
 /* CHANCE CSS ABOVE */

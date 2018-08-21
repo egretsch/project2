@@ -12,7 +12,7 @@ function nytArticles() {
         url: url,
         method: 'GET',
     }).done(function (result) {
-        console.log(result);
+        // console.log(result);
         for (let i = 0; i < result.results.length; i++) {
             if (i === 0) {
                 capture(result, i, $("#sectionOne"));
@@ -26,6 +26,7 @@ function nytArticles() {
                 capture(result, i, $("#nytStuff"));
             }
         }
+        console.log(result);
     }).fail(function (err) {
         throw err;
     });
@@ -39,9 +40,9 @@ function capture(result, i, location) {
     let about = result.results[i].abstract;
     let author = result.results[i].byline;
     let apiUrl = result.results[i].url;
-    
-    
-    let div = $("<a id='articleLink' href='/article'>");
+
+
+    let div = $("<a id='articleLink' class='hoverable' href='/article'>");
     div.append("<h5 class='nytTitle'>" + title + "</h5>");
     div.append("<img class='nytImage' src=" + imgArticle + ">");
     div.append("<p class='nytText'>" + about + "</p>");
