@@ -14,18 +14,21 @@
 
 </div>
 
+{{!-- {{#each items}}
+<p>{{title}}</p>
+<button data={{id}} class="edit">edit</button>
+{{/each}} --}}
+
 {{#each items}}
 <div class="row posts-articles-individual" data="{{id}}">
     <div class="col s8 offset-s2 hoverable" style="border-bottom: double;">
         <img src="{{img}}" height="150" width="210" style="float: left; margin: 0px 10px 10px 0px">
         <h5>{{title}}</h5>
         <p>{{snippet}}</p>
-        <button data="{{id}}" class="small material-icons hoverable" style="float: right; margin: 5px 5px">delete_forever</button>
+        <button data="{{id}}" class="small material-icons hoverable delete-button" style="float: right; margin: 5px 5px">delete_forever</button>
         <button class="small material-icons hoverable" style="float: right; margin: 5px 5px">edit</button>
     </div>
 </div>
 {{/each}}
 
-
-
-<script src="/assets/js/postsLogic.js"></script>
+<script src="/assets/js/deleteLogic.js"></script>

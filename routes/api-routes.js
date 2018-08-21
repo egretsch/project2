@@ -89,7 +89,6 @@ router.get('/article', function (req, res) {
 
         }
 
-
     });
 });
 
@@ -109,6 +108,17 @@ router.post("/articles/add", function (req, res) {
         res.send(dbArticle);
     })
 });
+
+router.delete("/article/delete/:id", function(req, res) {
+    db.Article.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      });
+  });
 
 
 

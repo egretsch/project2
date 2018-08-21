@@ -38,7 +38,7 @@ function capture(result, i, location) {
     let apiUrl = result.results[i].url;
 
 
-    let div = $("<a id='articleLink' class='hoverable' href='/article'>");
+    let div = $("<a id='articleLink' class='hoverable' href='/article/"+title+"'>");
     div.append("<h5 class='nytTitle'>" + title + "</h5>");
     div.append("<img class='nytImage' src=" + imgArticle + ">");
     div.append("<p class='nytText'>" + about + "</p>");
