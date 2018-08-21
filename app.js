@@ -11,7 +11,10 @@ const connection = new Sequelize('userinfo', 'root', 'password', {
   operatorsAliases: false
 });
 
-
+const Login = connection.define("login", {
+  title: Sequelize.STRING,
+  content: Sequelize.STRING
+});
 
 connection.sync();
   
