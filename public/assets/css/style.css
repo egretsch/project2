@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+
+body{
+    color: rgb(2, 0, 0);
+    font-family: 'Ubuntu', 'Times New Roman', Times, serif;
+}
+
+.x {
+   -webkit-user-select: none;
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none; 
+  }
+
+.classy{
+  font-family: 'Abril Fatface', 'cursive';
+  }
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+  }
+
+/* Nav Bar*/
+
+.mainHeaderWrapper{
+  width: 100%;
+  height: 80px;
+  }
+  
+#mainPageCenterText{
+  font-weight: bolder;
+  font-size: 30px;
+  width: 200px;
+  height: 60px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 80px;  
+  }
+
+ #userButton{
+  background: url("../images/user.png");
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  float: right;
+  margin-right: 30px;
+  margin-top: 23px; 
+  }
+ /* Nav Bar*/
+
+.navBar{
+  width: 100%;
+  height: 50px;
+  position: sticky;
+  top: 0px;
+  background: rgba(0, 0, 0, .9);
+  /* border-bottom: 3px solid rgba(141, 141, 141, 0.842); */
+}
+
+.navBarTextWrapper{
+  margin: 0 auto;
+  width: 95px;
+  height: 40px;
+}
+
+#navBarText1{
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+}
+  /* Nav Bar*/
+
+#emptySpace{
+  height: 1500px;
+  width: 100%;
+  }
+
+#whiteSpace{
+    width: 100%;
+    height: 1500px;
+}
+
+/* .articleWrapper{
+    background: red;
+
+} */
+
+/* CHANCE CSS BELOW */
+
+/* Shadow  */
+
+.navBar{
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  }
+.navBar:before, .navBar:after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  -webkit-box-shadow:0 0 150px rgba(0,0,0,0.3);
+  -moz-box-shadow:0 0 150px rgba(0,0,0,0.3);
+  box-shadow:0 0 150px rgba(0, 0, 0, 0.3);
+  top:0;
+  bottom:0;
+  left:10px;
+  right:10px;
+  -moz-border-radius:100px / 10px;
+  border-radius:100px / 10px;
+  }
+.navBar:after{
+  right:10px;
+  left:auto;
+  -webkit-transform:skew(8deg) rotate(3deg);
+  -moz-transform:skew(8deg) rotate(3deg);
+  -ms-transform:skew(8deg) rotate(3deg);
+  -o-transform:skew(8deg) rotate(3deg);
+  transform:skew(8deg) rotate(3deg);
+  }
+
+/* Nav Bar Above*/
+
+.row{
+  margin-top: 25px;
+  }
+.catagories{
+  border-top: 1px solid black;
+}
+
+.l2{
+  text-align: center;
+  font-size: 15px;
+  border-bottom: 1px solid black;
+  }
+
+.l2:hover{
+  background:rgba(0, 0, 0, .9);
+  color: white;
+  }
+
+.nytImage,
+.nytTitle,
+.nytText,
+.nytAuthor{
+  width: 100%;
+  color:black;
+  }
+
+/* CHANCE CSS ABOVE */
