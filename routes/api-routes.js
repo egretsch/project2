@@ -28,27 +28,23 @@ router.get('/bookmarks', function(req,res){
 router.get('/settings', function(req,res){
     res.render("settings");
 });
-<<<<<<< HEAD
 
-router.get('/userarticle/:authorname/:articlename', function(req,res){
+router.get('/userarticle/:id', function(req,res){
+
+
 
     db.Article.findAll({
         where: {
-          authorname: req.params.author
-        },
-        where: {
-            articlename: req.params.title
-          }
+          id: req.params.id
+        }
       })
         .then(function(dbArticle) {
-          res.send(dbArticle);
-          res.render("userarticles");
+          console.log("Something happened on the backend");
+          res.render("/userarticles", {data: dbArticle});
         });
     
 });
 
-=======
->>>>>>> 76e6487df88acb1ca4ac2f1d261de56f4f51e8e2
 
 router.get('/article', function(req,res){
     
