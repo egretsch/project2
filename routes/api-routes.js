@@ -87,6 +87,30 @@ router.post("/articles/add", function(req, res){
     })
 });
 
+// router.post("/articles/add", function(req, res){
+
+//     db.Article.create({
+//         title: req.body.title,
+//         author: req.body.author,
+//         img: req.body.img,
+//         body: req.body.body,
+//         snippet: req.body.snippet
+//     }).then(function(dbArticle){
+//         res.send(dbArticle);
+//     })
+// });
+
+router.delete("/article/delete/:id", function(req, res) {
+    db.Article.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      });
+  });
+
 
 
 
