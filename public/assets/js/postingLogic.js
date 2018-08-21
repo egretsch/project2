@@ -1,5 +1,6 @@
 $('.posting-button').on("click", function(){
     console.log("I have been pushed!");
+    window.location.href = "/posts";
 
     let postingArticleTitle = $('.postingArticleTitle').val();
     let postingArticleSnippet = $('.postingArticleSnippet').val();
