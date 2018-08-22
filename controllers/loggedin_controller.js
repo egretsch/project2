@@ -32,7 +32,7 @@ router.get("/createuser", function (req, res) {
 
 router.post("/api/addUser", function (req, res) {
     // console.log(req.body);
-    
+
     const saltRounds = 10;
     const myPlaintextPassword = req.body.password
     bcrypt.genSalt(saltRounds, function (err, salt) {
@@ -47,6 +47,8 @@ router.post("/api/addUser", function (req, res) {
 
 
 });
+
+
 
 router.post("/api/validate", function (req, res) {
     db.UserInfo.findOne({
@@ -64,13 +66,26 @@ router.post("/api/validate", function (req, res) {
         } else {
             bcrypt.compare(req.body.password, data.dataValues.password).then(function (bcryptRes) {
                 // res == true
-            
-            if (!bcryptRes) {
-                console.log("it worked1");
-                res.status(404).send('Invalid username or password. Please try again');
-            } else {
-                console.log("it worked 2");
-            }
+
+                if (!bcryptRes) {
+                    console.log("it worked1");
+                    res.status(404).send('Invalid username or password. Please try again');
+                    let wrongPassword = $('Invalid username or password. Please try again')
+                    $("#wrong").append(wrongPassword)
+                } else {
+                    console.log("it worked 2");
+                    var userObj = {
+                        id: data.dataValues.id,
+                        email: data.dataValues.email,
+                        first_name: data.dataValues.first_name,
+                        last_name: data.dataValues.last_name
+                    }
+                    console.log(userObj)
+                    // req.session.user.loggedIn = true;
+                    // req.session.user.currentUser = userObj;
+                    res.json(data);
+                    res.redirect("/loggedin");
+                }
             });
         }
 
