@@ -32,6 +32,20 @@ router.get('/settings', function (req, res) {
 router.get('/userarticle', function (req, res) {
     res.render("userarticle");
 });
+router.get('/edit/:id', function (req, res) {
+
+    db.Article.findAll({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(function (dbArticle) {
+            console.log(dbArticle[0].title);
+            let dbArticleUsable = dbArticle[0];
+            res.render("editArticle", { data: dbArticleUsable });
+        });
+    
+});
 
 
 router.get('/userarticle/:id', function (req, res) {
@@ -42,7 +56,7 @@ router.get('/userarticle/:id', function (req, res) {
         }
     })
         .then(function (dbArticle) {
-            console.log("Something happened on the backend");
+            // console.log("Something happened on the backend");
             /* Need to set a new variable for the returned sequelize object because you can't
             use bracket notation in handlebars */
             let dbArticleUsable = dbArticle[0];
@@ -111,6 +125,17 @@ router.post("/articles/add", function (req, res) {
 
 router.delete("/article/delete/:id", function(req, res) {
     db.Article.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      });
+  });
+
+router.put("/article/update/:id", function(req, res) {
+    db.Article.update({
       where: {
         id: req.params.id
       }

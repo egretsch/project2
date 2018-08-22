@@ -12,7 +12,7 @@
 
 <div class="row">
   <div class="col s4"></div>
-  <div id="postingHeader" class="col s4 classy">Post An Idea Worth Sharing</div>
+  <div id="postingHeader" class="col s4 classy">Edit Article</div>
   <div class="col s4"></div>
 </div>
 
@@ -20,7 +20,7 @@
 <div class="row">
   <div class="col s4"></div>
   <div class="input-field col s4">
-    <input value="" id="input_text" class="postingArticleTitle" type="text" data-length="120">
+    <input value="{{data.title}}" id="input_text" class="postingArticleTitle" type="text" data-length="120">
     <label for="input_text">Article Title</label>
   </div>
   <div class="col s4"></div>
@@ -29,7 +29,7 @@
 <div class="row">
   <div class="col s4"></div>
   <div class="input-field col s4">
-    <input value="" id="input_text" class="postingArticleSnippet" type="text" data-length="120">
+    <input value="{{data.snippet}}" id="input_text" class="postingArticleSnippet" type="text" data-length="120">
     <label for="input_text">Article Snippet</label>
   </div>
   <div class="col s4"></div>
@@ -39,7 +39,7 @@
 <div class="row">
   <div class="col s4"></div>
   <div class="input-field col s4">
-    <input value="" id="input_text" class="postingArticleAuthor" type="text" data-length="60">
+    <input value="{{data.author}}" id="input_text" class="postingArticleAuthor" type="text" data-length="60">
     <label for="input_text">Your Author Name</label>
   </div>
   <div class="col s4"></div>
@@ -48,7 +48,7 @@
 <div class="row">
   <div class="col s2"></div>
   <div class="input-field col s8">
-    <input value="" id="first_name2" type="text" class="postingArticleImg">
+    <input value="{{data.img}}" id="first_name2" type="text" class="postingArticleImg">
     <label class="active" for="first_name2">Link For An Article Image</label>
   </div>
   <div class="col s2"></div>
@@ -59,7 +59,7 @@
   <form class="col s10">
     <div class="row">
       <div class="input-field col s12">
-        <textarea id="textarea1" class="postArticleBody materialize-textarea"></textarea>
+        <textarea id="textarea1" class="postArticleBody materialize-textarea">{{data.body}}</textarea>
         <label for="textarea1">Write something worth reading</label>
       </div>
     </div>
@@ -69,7 +69,26 @@
 
 <div class="center-align">
 
-  <a class="waves-effect waves-light btn-large posting-button">Submit</a>
+  <a class="waves-effect waves-light btn-large edit-button">Update</a>
 </div>
 
-<script src="/assets/js/postingLogic.js"></script>
+<script src="/assets/js/editArticleLogic.js">
+$('.edit-button').on("click", function(){
+
+    let articleID = $(this).attr("data");
+    console.log(articleID);
+    
+    let articleToDelete = {
+        id : articleID,
+    }
+
+    $.ajax({
+        method: "PUT",
+        url: "/article/edit/" + articleID
+      })
+        .then(function(response) {
+          console.log(response);
+          
+    });
+});
+</script>
