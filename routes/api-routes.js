@@ -134,12 +134,14 @@ router.delete("/article/delete/:id", function(req, res) {
       });
   });
 
-router.put("/article/update/:id", function(req, res) {
-    db.Article.update({
-      where: {
-        id: req.params.id
-      }
-    })
+  router.put("/article/update/:id", function(req, res) {
+    console.log(req.body.body)
+    db.Article.update(req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      })
       .then(function(dbPost) {
         res.json(dbPost);
       });
