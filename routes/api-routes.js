@@ -10,6 +10,14 @@ router.get('/', function (req, res) {
     res.render("index");
 });
 
+router.get('/usercreatepage', function (req, res) {
+    res.render("usercreatepage");
+});
+
+router.get('/userloginpage', function (req, res) {
+    res.render("index");
+});
+
 router.get('/posting', function (req, res) {
     res.render("posting");
 });
