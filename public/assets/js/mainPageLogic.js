@@ -60,7 +60,7 @@ function capture(result, i, location) {
         console.log(newArticle);
 
         $.post("/article", newArticle, function(data){
-            
+                console.log(data);
         });
 
         });
