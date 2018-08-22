@@ -41,9 +41,8 @@ $('#addUser').on('click', function() {
         .val()
         .trim()
     };
-
     $.post("/api/validate", user, function (data) {
-      // window.location.href = "/"
+      location.assign("/loggedin")
     })
   })
   

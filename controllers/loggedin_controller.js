@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt');
 var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", function (req, res) {
+router.get("/login", function (req, res) {
 
     // console.log(res);
     res.render("index", {});
@@ -15,10 +15,14 @@ router.get("/", function (req, res) {
 });
 
 router.get("/loggedin", function (req, res) {
-
+    console.log(req.session)
     // console.log(res);
-    res.render("loggedin", {});
-
+    if (req.session.user.loggedIn){
+        return res.render("loggedin", {});
+    } else {
+        res.render("index", {})
+        
+    }
 
 });
 
@@ -51,17 +55,13 @@ router.post("/api/addUser", function (req, res) {
 
 
 router.post("/api/validate", function (req, res) {
+    
     db.UserInfo.findOne({
         where: {
             email: req.body.email
         },
     }).then(function (data) {
-        console.log(data.dataValues);
-        console.log(req.body.email);
-        console.log();
-        console.log(data.dataValues.email);
-        console.log(data.dataValues.password);
-        if (!data && typeof data === object) {
+        if (!data && typeof data === "object") {
             res.status(404).send('Invalid username or password. Please try again');
         } else {
             bcrypt.compare(req.body.password, data.dataValues.password).then(function (bcryptRes) {
@@ -70,8 +70,6 @@ router.post("/api/validate", function (req, res) {
                 if (!bcryptRes) {
                     console.log("it worked1");
                     res.status(404).send('Invalid username or password. Please try again');
-                    let wrongPassword = $('Invalid username or password. Please try again')
-                    $("#wrong").append(wrongPassword)
                 } else {
                     console.log("it worked 2");
                     var userObj = {
@@ -80,11 +78,11 @@ router.post("/api/validate", function (req, res) {
                         first_name: data.dataValues.first_name,
                         last_name: data.dataValues.last_name
                     }
-                    console.log(userObj)
-                    // req.session.user.loggedIn = true;
-                    // req.session.user.currentUser = userObj;
-                    res.json(data);
-                    res.redirect("/loggedin");
+                    
+                    req.session.user.loggedIn = true;
+                    req.session.user.currentUser = userObj;
+                    res.json(data)
+                    // res.redirect("/loggedin");
                 }
             });
         }
@@ -92,28 +90,6 @@ router.post("/api/validate", function (req, res) {
     });
 });
 
-// router.post("/login", function (req, res) {
-//     db.UserInfo.findOne({
-//         where: { email: req.body.email }
-//     }).then(project => {
-//         console.log("******************************" + JSON.stringify(project))
 
-//         //   if project equals null, send to login failed page, else log them in
-//         if (!project) {
-//             console.log("\nLOGIN FAILED\n");
-
-//             //send to login failed page alert temporary
-
-//         } else {
-//             res.json(project);
-//             //send to application
-//         }
-
-//     })
-// });
-
-
-
-// Export routes for server.js to use.
 module.exports = router;
 
