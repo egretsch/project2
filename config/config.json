@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
-    "database": "paradigm_test",
+    "password": "Gwen!1987",
+    "database": "usertest",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
