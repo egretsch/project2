@@ -15,13 +15,9 @@ $('.creating-user-button').on("click", function(){
     
     console.log(newUserLoginObj);
 
-    // $.post("", newUserLoginObj, function(response){
-    //     console.log(response);
-    //     window.location.href = "/";
-    // });
-
-
     $.post("/api/addUser", newUserLoginObj, function(data){
-        // window.location.href = "/"
+        window.location.href = "/"
       })
+
+      
 });

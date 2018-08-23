@@ -170,6 +170,7 @@ router.post("/articles/add", function (req, res) {
         img: req.body.img,
         body: req.body.body,
         snippet: req.body.snippet
+        
     }).then(function (dbArticle) {
         res.send(dbArticle);
     })
@@ -203,28 +204,12 @@ router.put("/article/update/:id", function (req, res) {
 ////////////Ed and Tyler's Logic/////////////////////////////////////////////////////////////////////////////////
 
 // Create all our routes and set up logic within those routes where required.
-// router.get("/", function (req, res) {
-
-//     // console.log(res);
-//     res.render("index", {});     *** I commented this out - Was conflicting with api routes "/" route.
-
-
-// });
-
-router.get("/loggedin", function (req, res) {
-
-    // console.log(res);
-    res.render("/", {});
-
-
-});
-
 
 router.post("/api/addUser", function (req, res) {
     // console.log(req.body);
 
     const saltRounds = 10;
-    const myPlaintextPassword = req.body.password
+    const myPlaintextPassword = req.body.password;
     bcrypt.genSalt(saltRounds, function (err, salt) {
         bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
             req.body.password = hash;
@@ -246,11 +231,10 @@ router.post("/api/validate", function (req, res) {
             email: req.body.email
         },
     }).then(function (data) {
-        console.log(data.dataValues);
-        console.log(req.body.email);
-        console.log();
-        console.log(data.dataValues.email);
-        console.log(data.dataValues.password);
+        console.log(data.dataValues + "This is the datavalues");
+        console.log(req.body.email + "This is the email");
+        console.log(data.dataValues.email + "This is the email");
+        console.log(data.dataValues.password + "This is the password");
         if (!data && typeof data === object) {
             res.status(404).send('Invalid username or password. Please try again');
         } else {
@@ -262,46 +246,23 @@ router.post("/api/validate", function (req, res) {
                     res.status(404).send('Invalid username or password. Please try again');
                 } else {
                     console.log("it worked 2");
+                    
                     var userObj = {
                         id: data.dataValues.id,
                         email: data.dataValues.email,
                         first_name: data.dataValues.first_name,
                         last_name: data.dataValues.last_name
                     }
-                    console.log(userObj)
+                    console.log(userObj);
                     // req.session.user.loggedIn = true;
                     // req.session.user.currentUser = userObj;
                     
-                    res.json(data);
+                    res.json(userObj);
                 }
             });
         }
 
     });
 });
-
-// router.post("/login", function (req, res) {
-//     db.UserInfo.findOne({
-//         where: { email: req.body.email }
-//     }).then(project => {
-//         console.log("******************************" + JSON.stringify(project))
-
-//         //   if project equals null, send to login failed page, else log them in
-//         if (!project) {
-//             console.log("\nLOGIN FAILED\n");
-
-//             //send to login failed page alert temporary
-
-//         } else {
-//             res.json(project);
-//             //send to application
-//         }
-
-//     })
-// });
-
-
-
-// Export routes for server.js to use.
 
 module.exports = router;

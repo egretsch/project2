@@ -11,8 +11,9 @@ $('.creating-user-button').on("click", function(){
     
     console.log(user);
 
-    $.post("/api/validate", user, function (data) {
-        window.location.href = "/";
-      })
+      $.post("/api/validate", user).then(function (data) {
+console.log(data);
+
+    });
 
 });
