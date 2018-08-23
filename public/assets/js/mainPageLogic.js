@@ -1,34 +1,34 @@
 // console.log("test");
-function nytArticles() {
-    let url = "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/1.json";
-    url += '?' + $.param({
-        'api-key': "6086b5c73aa24707a614e2ff573a60f9"
-    });
-    $.ajax({
-        url: url,
-        method: 'GET',
-    }).done(function (result) {
-        // console.log(result);
-        for (let i = 0; i < result.results.length; i++) {
-            if (i > 9) {
-            //     capture(result, i, $("#sectionOne"));
-            // } else if (i === 1) {
-            //     capture(result, i, $("#sectionTwo"));
-            // } else if (i === 2) {
-            //     capture(result, i, $("#sectionThree"));
-            // } else if (i >= 3 && i < 10) {
-                capture(result, i, $("#nytStuffTest"));
-            } else {
-                capture(result, i, $("#nytStuff"));
-            }
-        }
-        console.log(result);
-    }).fail(function (err) {
-        throw err;
-    });
-};
+// function nytArticles() {
+//     let url = "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/1.json";
+//     url += '?' + $.param({
+//         'api-key': "6086b5c73aa24707a614e2ff573a60f9"
+//     });
+//     $.ajax({
+//         url: url,
+//         method: 'GET',
+//     }).done(function (result) {
+//         // console.log(result);
+//         for (let i = 0; i < result.results.length; i++) {
+//             if (i > 9) {
+//             //     capture(result, i, $("#sectionOne"));
+//             // } else if (i === 1) {
+//             //     capture(result, i, $("#sectionTwo"));
+//             // } else if (i === 2) {
+//             //     capture(result, i, $("#sectionThree"));
+//             // } else if (i >= 3 && i < 10) {
+//                 capture(result, i, $("#nytStuffTest"));
+//             } else {
+//                 capture(result, i, $("#nytStuff"));
+//             }
+//         }
+//         console.log(result);
+//     }).fail(function (err) {
+//         throw err;
+//     });
+// };
 
-nytArticles();
+// nytArticles();
 
 function capture(result, i, location) {
     let imgArticle = result.results[i].media[0]["media-metadata"][2].url;

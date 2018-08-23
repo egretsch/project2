@@ -1,10 +1,11 @@
+require("dotenv").config();
 const express = require('express');
 const request = require('request');
 var cheerio = require('cheerio');
 const router = express.Router();
 var db = require("../models/index.js");
+let keys = require("../keys.js");
 let obj;
-
 
 
 router.get("/api/paradigm", function (req, res) {
@@ -15,9 +16,21 @@ router.get("/api/paradigm", function (req, res) {
 });
 
 router.get('/', function (req, res) {
+
+    request.get({
+        url: "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/7.json",
+        qs: {
+          'api-key': keys.most_popular
+        },
+      }, function(err, response, body) {
+        body = JSON.parse(body);
+        console.log(body);
+      })
+    
+
     db.Article.findAll()
         .then(function (response) {
-            let x = response.length -1;
+            let x = response.length - 1;
             let y = x - 1;
             let z = x - 2;
 
@@ -56,7 +69,9 @@ router.get('/posting', function (req, res) {
 router.get('/posts', function (req, res) {
 
     db.Article.findAll().then(function (data) {
+
         res.render("posts", { items: data });
+
     });
 });
 
