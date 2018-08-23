@@ -6,13 +6,13 @@ var bcrypt = require('bcrypt');
 var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", function (req, res) {
+// router.get("/", function (req, res) {
 
-    // console.log(res);
-    res.render("index", {});
+//     // console.log(res);
+//     res.render("index", {});     *** I commented this out - Was conflicting with api routes "/" route.
 
 
-});
+// });
 
 router.get("/loggedin", function (req, res) {
 

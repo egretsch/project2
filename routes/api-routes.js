@@ -6,8 +6,50 @@ var db = require("../models/index.js");
 let obj;
 
 
+
+router.get("/api/paradigm", function (req, res) {
+    db.Article.findAll({})
+        .then(function (response) {
+            res.send(response);
+        });
+});
+
+
+
+
 router.get('/', function (req, res) {
-    res.render("index");
+    db.Article.findAll()
+        .then(function (response) {
+            let x = response.length -1;
+            let y = x - 1;
+            let z = x - 2;
+
+            let one = {
+                id: response[x].id,
+                title: response[x].title,
+                author: response[x].author,
+                img: response[x].img,
+                body: response[x].body,
+                snippet: response[x].snippet
+            }
+            let two = {
+                id: response[y].id,
+                title: response[y].title,
+                author: response[y].author,
+                img: response[y].img,
+                body: response[y].body,
+                snippet: response[y].snippet
+            }
+            let three = {
+                id: response[z].id,
+                title: response[z].title,
+                author: response[z].author,
+                img: response[z].img,
+                body: response[z].body,
+                snippet: response[z].snippet
+            }
+            res.render("index", { items: one, two, three });
+        });
 });
 
 router.get('/posting', function (req, res) {
@@ -44,7 +86,7 @@ router.get('/edit/:id', function (req, res) {
             let dbArticleUsable = dbArticle[0];
             res.render("editArticle", { data: dbArticleUsable });
         });
-    
+
 });
 
 
@@ -123,29 +165,29 @@ router.post("/articles/add", function (req, res) {
     })
 });
 
-router.delete("/article/delete/:id", function(req, res) {
+router.delete("/article/delete/:id", function (req, res) {
     db.Article.destroy({
-      where: {
-        id: req.params.id
-      }
+        where: {
+            id: req.params.id
+        }
     })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
-  });
+        .then(function (dbPost) {
+            res.json(dbPost);
+        });
+});
 
-  router.put("/article/update/:id", function(req, res) {
+router.put("/article/update/:id", function (req, res) {
     console.log(req.body.body)
     db.Article.update(req.body,
-      {
-        where: {
-          id: req.params.id
-        }
-      })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
-  });
+        {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function (dbPost) {
+            res.json(dbPost);
+        });
+});
 
 
 

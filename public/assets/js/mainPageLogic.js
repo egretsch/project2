@@ -10,13 +10,13 @@ function nytArticles() {
     }).done(function (result) {
         // console.log(result);
         for (let i = 0; i < result.results.length; i++) {
-            if (i === 0) {
-                capture(result, i, $("#sectionOne"));
-            } else if (i === 1) {
-                capture(result, i, $("#sectionTwo"));
-            } else if (i === 2) {
-                capture(result, i, $("#sectionThree"));
-            } else if (i >= 3 && i < 10) {
+            if (i > 11) {
+            //     capture(result, i, $("#sectionOne"));
+            // } else if (i === 1) {
+            //     capture(result, i, $("#sectionTwo"));
+            // } else if (i === 2) {
+            //     capture(result, i, $("#sectionThree"));
+            // } else if (i >= 3 && i < 10) {
                 capture(result, i, $("#nytStuffTest"));
             } else {
                 capture(result, i, $("#nytStuff"));

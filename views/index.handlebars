@@ -1,58 +1,76 @@
 <div class="container">
-    
-    <div class="row catagories">
-        <div class="col s4 m2 l2 hoverable">World</div>
-        <div class="col s4 m2 l2 hoverable">Local</div>
-        <div class="col s4 m2 l2 hoverable">Business</div>
-        <div class="col s4 m2 l2 hoverable">Finance</div>
-        <div class="col s4 m2 l2 hoverable">Tech</div>
-        <div class="col s4 m2 l2 hoverable">Politics</div>
-        <div class="col s4 m2 l2 hoverable">Science</div>
-        <div class="col s4 m2 l2 hoverable">Health</div>
-        <div class="col s4 m2 l2 hoverable">Outdoors</div>
-        <div class="col s4 m2 l2 hoverable">Sports</div>
-        <div class="col s4 m2 l2 hoverable">Other</div>
-        <div class="col s4 m2 l2 hoverable">For Fun</div>
+
+  <div class="row catagories">
+    <div class="col s4 m2 l2 hoverable">World</div>
+    <div class="col s4 m2 l2 hoverable">Local</div>
+    <div class="col s4 m2 l2 hoverable">Business</div>
+    <div class="col s4 m2 l2 hoverable">Finance</div>
+    <div class="col s4 m2 l2 hoverable">Tech</div>
+    <div class="col s4 m2 l2 hoverable">Politics</div>
+    <div class="col s4 m2 l2 hoverable">Science</div>
+    <div class="col s4 m2 l2 hoverable">Health</div>
+    <div class="col s4 m2 l2 hoverable">Outdoors</div>
+    <div class="col s4 m2 l2 hoverable">Sports</div>
+    <div class="col s4 m2 l2 hoverable">Other</div>
+    <div class="col s4 m2 l2 hoverable">For Fun</div>
+  </div>
+
+  <div class="row topRow">
+    <div id="sectionOne" class="col s12 m4 l5">
+      <a id='articleLink' class='hoverable posts-articles-individual' data="{{items.id}}">
+        <h5 class='nytTitle'>{{items.title}}</h5>
+        <img class='nytImage' src="{{items.img}}">
+        <p class='nytText'>{{items.snippet}}</p>
+        <p class='nytAuthor'>{{items.author}}</p>
+      </a>
     </div>
-    
-    <div class="row">
-        <div id="sectionOne" class="col s12 m4 l5">
-
-        </div>
-        <div id="sectionTwo" class="col s12 m4 l3">
-
-        </div>
-        <div id="sectionThree" class="col s12 m4 l4">
-
-        </div>
+    <div id="sectionTwo" class="col s12 m4 l3">
+      <a id='articleLink' class='hoverable posts-articles-individual' data="{{two.id}}">
+        <h5 class='nytTitle'>{{two.title}}</h5>
+        <img class='nytImage' src="{{two.img}}">
+        <p class='nytText'>{{two.snippet}}</p>
+        <p class='nytAuthor'>{{two.author}}</p>
+      </a>
+    </div>
+    <div id="sectionThree" class="col s12 m4 l4">
+      <a id='articleLink' class='hoverable posts-articles-individual' data="{{three.id}}">
+        <h5 class='nytTitle'>{{three.title}}</h5>
+        <img class='nytImage' src="{{three.img}}">
+        <p class='nytText'>{{three.snippet}}</p>
+        <p class='nytAuthor'>{{three.author}}</p>
+      </a>
+      </a>
     </div>
     <div class="row">
-        <div id="nytStuff" class="col s12 m7 l7">
+      <div id="nytStuff" class="col s12 m7 l7">
 
-        </div>
-        <div id="nytStuffTest" class="col s12 m5 l5">
+      </div>
+      <div id="nytStuffTest" class="col s12 m5 l5">
 
-        </div>
-<div class="moveDown">
-  <div class="container">
-    <div class="row">
-      <h1 class="col-sm-12 col-lg-12 justify-content-center text">!!Eat Dem Burgers!!</h1>
+      </div>
     </div>
   </div>
-  <main>
-    
-  </main>
-  <div class="container text2">
+  {{!--
+  <div class="moveDown">
+    <div class="container">
+      <div class="row">
+        <h1 class="col-sm-12 col-lg-12 justify-content-center text">!!Eat Dem Burgers!!</h1>
+      </div>
+    </div>
+    <main>
+
+    </main>
+    <div class="container text2">
       <div class="row">
         <div class="col-sm-6 col-lg-6 justify-content-center">
-          <form action="" >
+          <form action="">
             <div>
               <label>Username:</label>
-              <input type="text" name="username" id="username" placeholder="Email"/>
+              <input type="text" name="username" id="username" placeholder="Email" />
             </div>
             <div>
               <label>Password:</label>
-              <input type="password" name="password" id="password" placeholder="Password"/>
+              <input type="password" name="password" id="password" placeholder="Password" />
             </div>
             <div>
               <button id="userLoggin">Login</button>
@@ -64,4 +82,16 @@
         </div>
       </div>
     </div>
-</div>
+  </div> --}}
+
+  <script>
+    $(".posts-articles-individual").on('click', function () {
+      let postsUserArticleId = $(this).attr('data');
+      window.location.href = "/userarticle/" + postsUserArticleId;
+      console.log(postsUserArticleId);
+
+      $.get('/userarticle' + postsUserArticleId, function (req, res) {
+        console.log("I sent something possibly");
+      })
+    })
+  </script>
