@@ -172,3 +172,29 @@ body{
   }
 
 /* CHANCE CSS ABOVE */
+
+/* Tyler CSS BELOW */
+
+.login-page{
+  text-align : center;
+  font-size: 30px;
+  margin: 15px;
+  line-height: 60px;
+}
+
+#input-text2 {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+#singlebutton {
+  margin-left: 715px;
+  margin-top: 100px;
+ 
+
+}
+
+
+.btn-primary {
+  color: black;
+}

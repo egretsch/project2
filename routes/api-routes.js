@@ -32,6 +32,11 @@ router.get('/settings', function (req, res) {
 router.get('/userarticle', function (req, res) {
     res.render("userarticle");
 });
+
+router.get('/loginpage', function (req, res) {
+    res.render("loginpage")
+});
+
 router.get('/edit/:id', function (req, res) {
 
     db.Article.findAll({
