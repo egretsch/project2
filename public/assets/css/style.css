@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
-
+html,
 body{
     color: rgb(2, 0, 0);
     font-family: 'Ubuntu', 'Times New Roman', Times, serif;
+    /* background-image: url("https://pixabay.com/get/eb35b80f29f6073ed1534705fb094f93e477e3d41eac104496f5c17aa1e8b5ba/ribbon-2090126_1920.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; */
 }
 
 .link
@@ -157,8 +161,8 @@ body{
 .nytTitle,
 .nytText,
 .nytAuthor{
-  width: 100%;
   color:black;
+  width:100%;
   }
 
 .bLink{
@@ -170,5 +174,10 @@ body{
   background:rgba(0, 0, 0, .9);
   color: white;
   }
+.topRow{
+  margin-bottom: 100px;
+}
+
+
 
 /* CHANCE CSS ABOVE */

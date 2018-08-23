@@ -19,38 +19,39 @@
     <div id="sectionOne" class="col s12 m4 l5">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{items.id}}">
         <h5 class='nytTitle'>{{items.title}}</h5>
-        <img class='nytImage' src="{{items.img}}">
+        <img src="{{items.img}}" width="100%" height="300px">
         <p class='nytText'>{{items.snippet}}</p>
-        <p class='nytAuthor'>{{items.author}}</p>
+        <p class='nytAuthor'>By {{items.author}}</p>
       </a>
     </div>
     <div id="sectionTwo" class="col s12 m4 l3">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{two.id}}">
         <h5 class='nytTitle'>{{two.title}}</h5>
-        <img class='nytImage' src="{{two.img}}">
+        <img class='nytImage' src="{{two.img}}" width="100%" height="250px">
         <p class='nytText'>{{two.snippet}}</p>
-        <p class='nytAuthor'>{{two.author}}</p>
+        <p class='nytAuthor'>By {{two.author}}</p>
       </a>
     </div>
     <div id="sectionThree" class="col s12 m4 l4">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{three.id}}">
         <h5 class='nytTitle'>{{three.title}}</h5>
-        <img class='nytImage' src="{{three.img}}">
+        <img src="{{three.img}}" width="100%" height="300px">
         <p class='nytText'>{{three.snippet}}</p>
-        <p class='nytAuthor'>{{three.author}}</p>
+        <p class='nytAuthor'>By {{three.author}}</p>
       </a>
       </a>
     </div>
+    <div class="row spacer"></div>
     <div class="row">
-      <div id="nytStuff" class="col s12 m7 l7">
+      <div id="nytStuffTest" class="col s12 m7 l7">
 
       </div>
-      <div id="nytStuffTest" class="col s12 m5 l5">
+      <div id="nytStuff" class="col s12 m5 l5">
 
       </div>
     </div>
   </div>
-  {{!--
+{{!--   
   <div class="moveDown">
     <div class="container">
       <div class="row">
