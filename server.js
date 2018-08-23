@@ -7,7 +7,7 @@ let cors = require('cors');
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 var PORT = process.env.PORT || 8080;
-let userRoutes = require('./controllers/loggedin_controller.js');
+
 let articleRoutes = require('./routes/api-routes.js');
 
 
@@ -20,7 +20,6 @@ app.use(bodyParser.json());
 // app.use(userSetup);
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.use(userRoutes);
 app.use(articleRoutes);
 // app.use(session({
 //   secret: process.env.SESSIONSECRET || 'cat',

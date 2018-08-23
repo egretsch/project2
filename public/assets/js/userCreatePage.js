@@ -7,8 +7,8 @@ $('.creating-user-button').on("click", function(){
     let creatingUserPassword = $('.creatingUserPassword').val();
     
     let newUserLoginObj = {
-        firstName : creatingUserFirstName,
-        lastName : creatingUserLastName,
+        first_name : creatingUserFirstName,
+        last_name : creatingUserLastName,
         email : creatingUserEmail,
         password : creatingUserPassword,
     }
@@ -22,10 +22,6 @@ $('.creating-user-button').on("click", function(){
 
 
     $.post("/api/addUser", newUserLoginObj, function(data){
-        // window.location.href = "/"
-      })
-
-      $.post("/api/validate", newUserLoginObj, function (data) {
         // window.location.href = "/"
       })
 });

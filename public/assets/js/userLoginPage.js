@@ -4,16 +4,15 @@ $('.creating-user-button').on("click", function(){
     let creatingUserEmail = $('.signingInUserEmail').val();
     let creatingUserPassword = $('.signingInUserPassword').val();
     
-    let UseSigningInObj = {
+    let user = {
         email : creatingUserEmail,
-        password : creatingUserPassword,
+        password : creatingUserPassword
     }
     
-    console.log(UseSigningInObj);
+    console.log(user);
 
-    // $.post("", newUserLoginObj, function(response){
-    //     console.log(response);
-    //     window.location.href = "/";
-    // });
+    $.post("/api/validate", user, function (data) {
+        window.location.href = "/";
+      })
 
 });

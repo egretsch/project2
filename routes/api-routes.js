@@ -3,9 +3,8 @@ const request = require('request');
 var cheerio = require('cheerio');
 const router = express.Router();
 var db = require("../models/index.js");
+var bcrypt = require('bcrypt');
 let obj;
-
-
 
 router.get("/api/paradigm", function (req, res) {
     db.Article.findAll({})
@@ -261,8 +260,6 @@ router.post("/api/validate", function (req, res) {
                 if (!bcryptRes) {
                     console.log("it worked1");
                     res.status(404).send('Invalid username or password. Please try again');
-                    let wrongPassword = $('Invalid username or password. Please try again')
-                    $("#wrong").append(wrongPassword)
                 } else {
                     console.log("it worked 2");
                     var userObj = {
@@ -274,8 +271,8 @@ router.post("/api/validate", function (req, res) {
                     console.log(userObj)
                     // req.session.user.loggedIn = true;
                     // req.session.user.currentUser = userObj;
+                    
                     res.json(data);
-                    res.redirect("/loggedin");
                 }
             });
         }
