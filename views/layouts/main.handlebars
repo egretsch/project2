@@ -9,50 +9,52 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 	<script src="/assets/js/mainPageLogic.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Monoton|Stalinist+One" rel="stylesheet">
+	<script src="./js/createUser.js"></script> 
+
 </head>
 
 <body>
 	<div class="mainHeaderWrapper">
-    <a class='dropdown-trigger' id="userButton" href='#' data-target='dropdown1'></a>
-    <div id="mainPageCenterText" class="x classy">Paradigm</div>
-</div>
+		<a class='dropdown-trigger' id="userButton" href='#' data-target='dropdown1'></a>
+		<div id="mainPageCenterText" class="x classy">Paradigm</div>
+	</div>
 
-<div class="navBar">
-    <nav>
-        <div class="nav-wrapper navBar">
-            <a href="/" id="navBarText1" class="brand-logo center x">News Feed</a>
-        </div>
-    </nav>
-</div>
-    {{!-- <div class="container"> --}}
-	{{{ body }}}
-    {{!-- </div> --}}
+	<div class="navBar">
+		<nav>
+			<div class="nav-wrapper navBar">
+				<a href="/" id="navBarText1" class="brand-logo center x">News Feed</a>
+			</div>
+		</nav>
+	</div>
+	{{!--
+	<div class="container"> --}} {{{ body }}} {{!-- </div> --}}
 
 	<ul id='dropdown1' class='dropdown-content'>
-    <li>
-        <a href="/posting">Submit A Post</a>
-    </li>
-    <li>
-        <a href="/posts">Your Articles</a>
-    </li>
-    <li>
-        <a href="/bookmarks">Bookmarks</a>
-    </li>
-    <li>
-        <a href="/settings">Edit Account</a>
-    </li>
-</ul>
-<div id="whiteSpace"></div>
+		<li>
+			<a href="/posting">Submit A Post</a>
+		</li>
+		<li>
+			<a href="/posts">Your Articles</a>
+		</li>
+		<li>
+			<a href="/bookmarks">Bookmarks</a>
+		</li>
+		<li>
+			<a href="/settings">Edit Account</a>
+		</li>
+	</ul>
+	<div id="whiteSpace"></div>
 
-<script>
-	$(document).ready(function () {
- $('.dropdown-trigger').dropdown();
- $('input#input_text, textarea#textarea2').characterCounter();
- 
-});
+	<script>
+		$(document).ready(function () {
+			$('.dropdown-trigger').dropdown();
+			$('input#input_text, textarea#textarea2').characterCounter();
 
-</script>
+		});
+
+	</script>
 </body>
 
 </html>
