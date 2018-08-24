@@ -1,12 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var UserInfo = sequelize.define("UserInfo", {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true
-
-    }, 
+  var UserInfo = sequelize.define("UserInfo", { 
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -37,5 +30,12 @@ module.exports = function (sequelize, DataTypes) {
     }
     
   });
+
+  UserInfo.associate = function(models) {
+    UserInfo.hasMany(models.Article, {
+      onDelete: "cascade"
+    });
+  };
+
   return UserInfo;
 };

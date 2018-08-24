@@ -5,6 +5,7 @@ var cheerio = require('cheerio');
 const router = express.Router();
 var db = require("../models/index.js");
 let keys = require("../keys.js");
+var bcrypt = require('bcrypt');
 let obj;
 
 
@@ -116,17 +117,20 @@ router.get('/posting', function (req, res) {
     res.render("posting");
 });
 
-router.get('/posts', function (req, res) {
-
+router.get('/posts/:id', function (req, res) {
+    //find posts where article equals
+    console.log(req.params.id);
     db.Article.findAll().then(function (data) {
 
         res.render("posts", { items: data });
-
-    });
+        });
 });
 
-router.get('/bookmarks', function (req, res) {
-    res.render("bookmarks");
+
+router.get('/bookmarks/:id', function (req, res) {
+    db.Article.findAll().then(function (data) {
+        res.render("bookmarks", { items: data });
+        });
 });
 
 router.get('/settings', function (req, res) {
@@ -160,7 +164,6 @@ router.get('/userarticle/:id', function (req, res) {
         }
     })
         .then(function (dbArticle) {
-            // console.log("Something happened on the backend");
             /* Need to set a new variable for the returned sequelize object because you can't
             use bracket notation in handlebars */
             let dbArticleUsable = dbArticle[0];
@@ -215,18 +218,18 @@ router.get('/article/:title', function (req, res) {
     });
 });
 
-// router.post("/article", function (req, res) {
-//     obj = req.body;
-// });
-
 router.post("/articles/add", function (req, res) {
 
     db.Article.create({
+
         title: req.body.title,
         author: req.body.author,
         img: req.body.img,
         body: req.body.body,
-        snippet: req.body.snippet
+        snippet: req.body.snippet,
+        UserInfoId: req.body.UserInfoId
+
+
     }).then(function (dbArticle) {
         res.send(dbArticle);
     })
@@ -256,8 +259,76 @@ router.put("/article/update/:id", function (req, res) {
         });
 });
 
+router.get('/usercreatepage', function (req, res) {
+    res.render("usercreatepage");
+});
+
+router.get('/userloginpage', function (req, res) {
+    res.render("userloginpage");
+});
+
+////////////Ed and Tyler's Logic/////////////////////////////////////////////////////////////////////////////////
+
+// Create all our routes and set up logic within those routes where required.
+
+router.post("/api/addUser", function (req, res) {
+    // console.log(req.body);
+
+    const saltRounds = 10;
+    const myPlaintextPassword = req.body.password;
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+        bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
+            req.body.password = hash;
+            db.UserInfo.create(req.body).then(function (data) {
+                res.json(data);
+            });
+        });
+
+    });
+
+
+});
 
 
 
+router.post("/api/validate", function (req, res) {
+    db.UserInfo.findOne({
+        where: {
+            email: req.body.email
+        },
+    }).then(function (data) {
+        console.log(data.dataValues + "This is the datavalues");
+        console.log(req.body.email + "This is the email");
+        console.log(data.dataValues.email + "This is the email");
+        console.log(data.dataValues.password + "This is the password");
+        if (!data && typeof data === object) {
+            res.status(404).send('Invalid username or password. Please try again');
+        } else {
+            bcrypt.compare(req.body.password, data.dataValues.password).then(function (bcryptRes) {
+                // res == true
+
+                if (!bcryptRes) {
+                    console.log("it worked1");
+                    res.status(404).send('Invalid username or password. Please try again');
+                } else {
+                    console.log("it worked 2");
+
+                    var userObj = {
+                        id: data.dataValues.id,
+                        email: data.dataValues.email,
+                        first_name: data.dataValues.first_name,
+                        last_name: data.dataValues.last_name
+                    }
+                    console.log(userObj);
+                    // req.session.user.loggedIn = true;
+                    // req.session.user.currentUser = userObj;
+
+                    res.json(userObj);
+                }
+            });
+        }
+
+    });
+});
 
 module.exports = router;
