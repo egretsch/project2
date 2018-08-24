@@ -1,22 +1,15 @@
 var express = require("express");
+var session = require('express-session');
 var app = express();
-var session = require('express-session')
-var PORT = process.env.PORT || 8080;
 var bodyParser = require("body-parser");
 var db = require("./models");
-var path = require('path');
+let cors = require('cors');
 // Set Handlebars.
 var exphbs = require("express-handlebars");
-var methodOverride = require('method-override');
-let routes = require('./controllers/loggedin_controller.js');
-var request = require('request');
-var fs = require('fs');
-var cheerio = require('cheerio');
-let cors = require('cors');
+var PORT = process.env.PORT || 8080;
 
-var apiRoutes = require("./routes/api-routes.js");
+let articleRoutes = require('./routes/api-routes.js');
 
-app.use(cors());
 app.use(session({
   secret: process.env.SESSIONSECRET || 'cat',
   resave: false,
@@ -28,24 +21,27 @@ function userSetup(req, res, next) {
     req.session.user = {};
     req.session.user.loggedIn = false;
   }
-  next()
+  next();
 }
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(userSetup);
-app.set("view engine", "handlebars");
-app.use(routes);
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
 app.use(bodyParser.json());
-app.use(methodOverride('_method'));
+app.use(cors());
+app.use(userSetup);
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.use(apiRoutes);
+app.set("view engine", "handlebars");
+app.use(articleRoutes);
 
-db.sequelize.sync().then(function(){
+
+
+
+
+
+// Start our server so that it can begin listening to client requests.
+db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
-    console.log("Server listening on: http://localhost:" + PORT);
+    console.log("App listening on PORT " + PORT);
   });
 });

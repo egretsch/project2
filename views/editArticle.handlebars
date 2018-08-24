@@ -69,26 +69,37 @@
 
 <div class="center-align">
 
-  <a class="waves-effect waves-light btn-large edit-button">Update</a>
+  <a data="{{data.id}}" class="waves-effect waves-light btn-large edit-button">Update</a>
 </div>
 
-<script src="/assets/js/editArticleLogic.js">
-$('.edit-button').on("click", function(){
+<script>
+  $('.edit-button').on("click", function () {
 
+    let postingArticleTitle = $('.postingArticleTitle').val();
+    let postingArticleSnippet = $('.postingArticleSnippet').val();
+    let postingArticleAuthor = $('.postingArticleAuthor').val();
+    let postingArticleImg = $('.postingArticleImg').val();
+    let postingArticleBody = $('.postArticleBody').val();
     let articleID = $(this).attr("data");
-    console.log(articleID);
-    
-    let articleToDelete = {
-        id : articleID,
+
+    let obj = {
+      title: postingArticleTitle,
+      snippet: postingArticleSnippet,
+      author: postingArticleAuthor,
+      img: postingArticleImg,
+      body: postingArticleBody
     }
 
     $.ajax({
-        method: "PUT",
-        url: "/article/edit/" + articleID
-      })
-        .then(function(response) {
-          console.log(response);
-          
-    });
+      method: "PUT",
+      url: "/article/update/"+articleID,
+      data: obj
+    })
+      .then(function() {
+        window.location.href = "/posts";
+      });
 });
+
+
+
 </script>
