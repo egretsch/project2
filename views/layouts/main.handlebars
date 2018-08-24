@@ -16,6 +16,7 @@
 </head>
 
 <body>
+
 	<div class="mainHeaderWrapper">
 		<a class='dropdown-trigger' id="userButton" href='#' data-target='dropdown1'></a>
 		<div id="mainPageCenterText" class="x classy">Paradigm</div>
@@ -28,35 +29,10 @@
 			</div>
 		</nav>
 	</div>
-	{{!--
-	<div class="container"> --}} {{{ body }}} {{!-- </div> --}} {{!--
-	<ul id='dropdown1' class='dropdown-content'>
-		<li>
-			<a href="/posting">Submit A Post</a>
-		</li>
-		<li>
-			<a href="/posts">Your Articles</a>
-		</li>
-		<li>
-			<a href="/bookmarks">Bookmarks</a>
-		</li>
-		<li>
-			<a href="/settings">Edit Account</a>
-		</li>
-		<li>
-			<a href="/logout">Logout</a>
-		</li>
-	</ul> --}}
+
+	<div class="container">{{{ body }}}</div>
 
 
-	<ul id='dropdown1' class='dropdown-content'>
-		<li>
-			<a href="/userloginpage">Log In</a>
-		</li>
-		<li>
-			<a href="/usercreatepage">Create Account</a>
-		</li>
-	</ul>
 
 
 	<div id="whiteSpace"></div>
@@ -65,9 +41,18 @@
 		$(document).ready(function () {
 			$('.dropdown-trigger').dropdown();
 			$('input#input_text, textarea#textarea2').characterCounter();
-
 		});
 
+		let theCookie = document.cookie;
+		console.log(theCookie);
+		if (theCookie == null) {
+			console.log("No Cookies For You!");
+			$('.container').append(
+				"<ul id='dropdown1' class='dropdown-content'><li><a href='/userloginpage'>Log In</a></li><li><a href='/usercreatepage'>Create Account</a></li>");
+		} else {
+			$('.container').append('<ul id="dropdown1" class="dropdown-content"><li><a href="/posting">Submit A Post</a></li><li><a href="/posts">Your Articles</a></li><li><a href="/bookmarks">Bookmarks</a></li><li><a href="/settings">Edit Account</a></li><li><a href="/logout">Logout</a></li></ul>');
+			console.log("Eat Away!");
+		}
 	</script>
 </body>
 

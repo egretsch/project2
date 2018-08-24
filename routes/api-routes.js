@@ -254,8 +254,8 @@ router.post("/api/validate", function (req, res) {
                         last_name: data.dataValues.last_name
                     }
                     console.log(userObj);
-                    // req.session.user.loggedIn = true;
-                    // req.session.user.currentUser = userObj;
+                    req.session.user.loggedIn = true;
+                    req.session.user.currentUser = userObj;
                     
                     res.json(userObj);
                 }

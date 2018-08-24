@@ -1,3 +1,8 @@
+
+
+
+
+
 // console.log("test");
 function nytArticles() {
     let url = "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/1.json";
@@ -11,12 +16,12 @@ function nytArticles() {
         // console.log(result);
         for (let i = 0; i < result.results.length; i++) {
             if (i > 11) {
-            //     capture(result, i, $("#sectionOne"));
-            // } else if (i === 1) {
-            //     capture(result, i, $("#sectionTwo"));
-            // } else if (i === 2) {
-            //     capture(result, i, $("#sectionThree"));
-            // } else if (i >= 3 && i < 10) {
+                //     capture(result, i, $("#sectionOne"));
+                // } else if (i === 1) {
+                //     capture(result, i, $("#sectionTwo"));
+                // } else if (i === 2) {
+                //     capture(result, i, $("#sectionThree"));
+                // } else if (i >= 3 && i < 10) {
                 capture(result, i, $("#nytStuffTest"));
             } else {
                 capture(result, i, $("#nytStuff"));
@@ -38,7 +43,7 @@ function capture(result, i, location) {
     let apiUrl = result.results[i].url;
 
 
-    let div = $("<a id='articleLink' class='hoverable' href='/article/"+title+"'>");
+    let div = $("<a id='articleLink' class='hoverable' href='/article/" + title + "'>");
     div.append("<h5 class='nytTitle'>" + title + "</h5>");
     div.append("<img class='nytImage' src=" + imgArticle + ">");
     div.append("<p class='nytText'>" + about + "</p>");
@@ -46,7 +51,7 @@ function capture(result, i, location) {
 
     location.append(div);
 
-    $(div).on("click", function(){
+    $(div).on("click", function () {
         console.log(title);
 
         let newArticle = {
@@ -59,10 +64,10 @@ function capture(result, i, location) {
 
         console.log(newArticle);
 
-        $.post("/article", newArticle, function(data){
-                console.log(data);
+        $.post("/article", newArticle, function (data) {
+            console.log(data);
         });
 
-        });
+    });
 
 };

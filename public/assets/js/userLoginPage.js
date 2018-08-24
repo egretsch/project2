@@ -8,11 +8,11 @@ $('.creating-user-button').on("click", function(){
         email : creatingUserEmail,
         password : creatingUserPassword
     }
-    
-    console.log(user);
 
       $.post("/api/validate", user).then(function (data) {
-console.log(data);
+        console.log(data.id);
+        // let ourCookie = data.id;
+        // document.cookie = ourCookie;
 
     });
 
