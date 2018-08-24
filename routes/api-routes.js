@@ -67,12 +67,30 @@ router.get('/posting', function (req, res) {
 });
 
 router.get('/posts', function (req, res) {
-    //find posts where article equals cookie
-
+    //find posts where article equals
     db.Article.findAll().then(function (data) {
         res.render("posts", { items: data });
     });
+
+    // db.Article.findAll({
+    //     where: {
+    //         id: req.params.localStoragePosts
+    //     }
+    // })
+    //     .then(function (dbArticle) {
+    //         // console.log("Something happened on the backend");
+    //         /* Need to set a new variable for the returned sequelize object because you can't
+    //         use bracket notation in handlebars */
+    //         let dbArticleUsable = dbArticle[0];
+    //         res.render("posts", { data: dbArticleUsable });
+    //     });
+
 });
+
+router.post('/posts', function (req, res) {
+   console.log(req.body.localStoragePosts);
+});
+
 
 router.get('/bookmarks', function (req, res) {
     res.render("bookmarks");
