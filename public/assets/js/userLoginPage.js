@@ -8,7 +8,7 @@ $('.creating-user-button').on("click", function(){
         email : creatingUserEmail,
         password : creatingUserPassword
     }
-
+    
       $.post("/api/validate", user).then(function (data) {
         console.log(data.id);
         window.location.href = "/"

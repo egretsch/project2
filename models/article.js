@@ -34,7 +34,14 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
           len: [1]
         }
-      }
+      },
+      theCookie: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      },
 
     });
     return Article;

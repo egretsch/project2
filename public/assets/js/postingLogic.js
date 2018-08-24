@@ -6,19 +6,22 @@ $('.posting-button').on("click", function(){
     let postingArticleAuthor = $('.postingArticleAuthor').val();
     let postingArticleImg = $('.postingArticleImg').val();
     let postingArticleBody = $('.postArticleBody').val();
+    let theCookie = localStorage.getItem("localThing");
     
     let newUserArticleObj = {
         title : postingArticleTitle,
         snippet : postingArticleSnippet,
         author : postingArticleAuthor,
         img : postingArticleImg,
-        body : postingArticleBody
+        body : postingArticleBody,
+        theCookie: theCookie
     }
     
-    console.log(newUserArticleObj);
+    console.log(newUserArticleObj);  
+        
 
     $.post("/articles/add", newUserArticleObj, function(response){
         console.log(response);
-        window.location.href = "/posts";
+        window.location.href = "/";
     });
 });

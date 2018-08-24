@@ -6,6 +6,7 @@ var db = require("../models/index.js");
 var bcrypt = require('bcrypt');
 let obj;
 
+
 router.get("/api/paradigm", function (req, res) {
     db.Article.findAll({})
         .then(function (response) {
@@ -17,38 +18,40 @@ router.get("/api/paradigm", function (req, res) {
 
 
 router.get('/', function (req, res) {
-    db.Article.findAll()
-        .then(function (response) {
-            let x = response.length -1;
-            let y = x - 1;
-            let z = x - 2;
+    // db.Article.findAll()
+    //     .then(function (response) {
+    //         let x = response.length -1;
+    //         let y = x - 1;
+    //         let z = x - 2;
 
-            let one = {
-                id: response[x].id,
-                title: response[x].title,
-                author: response[x].author,
-                img: response[x].img,
-                body: response[x].body,
-                snippet: response[x].snippet
-            }
-            let two = {
-                id: response[y].id,
-                title: response[y].title,
-                author: response[y].author,
-                img: response[y].img,
-                body: response[y].body,
-                snippet: response[y].snippet
-            }
-            let three = {
-                id: response[z].id,
-                title: response[z].title,
-                author: response[z].author,
-                img: response[z].img,
-                body: response[z].body,
-                snippet: response[z].snippet
-            }
-            res.render("index", { items: one, two, three });
-        });
+    //         let one = {
+    //             id: response[x].id,
+    //             title: response[x].title,
+    //             author: response[x].author,
+    //             img: response[x].img,
+    //             body: response[x].body,
+    //             snippet: response[x].snippet
+    //         }
+    //         let two = {
+    //             id: response[y].id,
+    //             title: response[y].title,
+    //             author: response[y].author,
+    //             img: response[y].img,
+    //             body: response[y].body,
+    //             snippet: response[y].snippet
+    //         }
+    //         let three = {
+    //             id: response[z].id,
+    //             title: response[z].title,
+    //             author: response[z].author,
+    //             img: response[z].img,
+    //             body: response[z].body,
+    //             snippet: response[z].snippet
+    //         }
+
+            // res.render("index", { items: one, two, three });
+            res.render("index");
+        // });
 });
 
 router.get('/usercreatepage', function (req, res) {
@@ -64,6 +67,7 @@ router.get('/posting', function (req, res) {
 });
 
 router.get('/posts', function (req, res) {
+    //find posts where article equals cookie
 
     db.Article.findAll().then(function (data) {
         res.render("posts", { items: data });
@@ -81,6 +85,7 @@ router.get('/settings', function (req, res) {
 router.get('/userarticle', function (req, res) {
     res.render("userarticle");
 });
+
 router.get('/edit/:id', function (req, res) {
 
     db.Article.findAll({
@@ -163,13 +168,16 @@ router.post("/article", function (req, res) {
 });
 
 router.post("/articles/add", function (req, res) {
-
+    
     db.Article.create({
-        title: req.body.title,
-        author: req.body.author,
-        img: req.body.img,
-        body: req.body.body,
-        snippet: req.body.snippet
+
+            title: req.body.title,
+            author: req.body.author,
+            img: req.body.img,
+            body: req.body.body,
+            snippet: req.body.snippet,
+            theCookie: req.body.theCookie
+
         
     }).then(function (dbArticle) {
         res.send(dbArticle);
