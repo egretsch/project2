@@ -11,8 +11,9 @@ $('.creating-user-button').on("click", function(){
 
       $.post("/api/validate", user).then(function (data) {
         console.log(data.id);
-        // let ourCookie = data.id;
-        // document.cookie = ourCookie;
+        window.location.href = "/"
+        let localThing = data.id;
+        localStorage.setItem("localThing", localThing);
 
     });
 

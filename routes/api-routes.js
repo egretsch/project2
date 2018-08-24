@@ -200,7 +200,6 @@ router.put("/article/update/:id", function (req, res) {
         });
 });
 
-
 ////////////Ed and Tyler's Logic/////////////////////////////////////////////////////////////////////////////////
 
 // Create all our routes and set up logic within those routes where required.
@@ -254,8 +253,8 @@ router.post("/api/validate", function (req, res) {
                         last_name: data.dataValues.last_name
                     }
                     console.log(userObj);
-                    req.session.user.loggedIn = true;
-                    req.session.user.currentUser = userObj;
+                    // req.session.user.loggedIn = true;
+                    // req.session.user.currentUser = userObj;
                     
                     res.json(userObj);
                 }
