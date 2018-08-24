@@ -67,18 +67,16 @@ router.get('/posting', function (req, res) {
 });
 
 router.get('/posts/:id', function (req, res) {
-    //find posts where article equals
-    console.log(req.params.id);
     db.Article.findAll().then(function (data) {
         res.render("posts", { items: data });
-        });
+    });
 });
 
 
 router.get('/bookmarks/:id', function (req, res) {
     db.Article.findAll().then(function (data) {
         res.render("bookmarks", { items: data });
-        });
+    });
 });
 
 router.get('/settings', function (req, res) {
