@@ -5,7 +5,7 @@ var cheerio = require('cheerio');
 const router = express.Router();
 var db = require("../models/index.js");
 let keys = require("../keys.js");
-// let obj;
+let obj;
 
 
 router.get("/api/paradigm", function (req, res) {
@@ -16,74 +16,101 @@ router.get("/api/paradigm", function (req, res) {
 });
 
 router.get('/', function (req, res) {
-
+    console.log(res);
     db.Article.findAll()
         .then(function (response) {
-            let x = response.length - 1;
-            let y = x - 1;
-            let z = x - 2;
+            if (response.length > 2) {
+                let x = response.length - 1;
+                let y = x - 1;
+                let z = x - 2;
 
-            let one = {
-                id: response[x].id,
-                title: response[x].title,
-                author: response[x].author,
-                img: response[x].img,
-                body: response[x].body,
-                snippet: response[x].snippet
-            }
-            let two = {
-                id: response[y].id,
-                title: response[y].title,
-                author: response[y].author,
-                img: response[y].img,
-                body: response[y].body,
-                snippet: response[y].snippet
-            }
-            let three = {
-                id: response[z].id,
-                title: response[z].title,
-                author: response[z].author,
-                img: response[z].img,
-                body: response[z].body,
-                snippet: response[z].snippet
-            }
+                let one = {
+                    id: response[x].id,
+                    title: response[x].title,
+                    author: response[x].author,
+                    img: response[x].img,
+                    body: response[x].body,
+                    snippet: response[x].snippet
+                }
+                let two = {
+                    id: response[y].id,
+                    title: response[y].title,
+                    author: response[y].author,
+                    img: response[y].img,
+                    body: response[y].body,
+                    snippet: response[y].snippet
+                }
+                let three = {
+                    id: response[z].id,
+                    title: response[z].title,
+                    author: response[z].author,
+                    img: response[z].img,
+                    body: response[z].body,
+                    snippet: response[z].snippet
+                }
 
-            request.get({
-                url: "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/7.json",
-                qs: {
-                    'api-key': keys.most_popular
-                },
-            }, function (err, response, body) {
-                body = JSON.parse(body);
-                let arr = [];
-                let arrTwo = []
-                for (let i = 0; i < body.results.length; i++) {
-                    let capture = {
-                        url: body.results[i].url,
-                        title: body.results[i].title,
-                        author: body.results[i].byline,
-                        img: body.results[i].media[0]["media-metadata"][2].url,
-                        snippet: body.results[i].abstract
+                request.get({
+                    url: "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/7.json",
+                    qs: {
+                        'api-key': keys.most_popular
+                    },
+                }, function (err, response, body) {
+                    body = JSON.parse(body);
+                    let arr = [];
+                    let arrTwo = []
+                    for (let i = 0; i < body.results.length; i++) {
+                        let capture = {
+                            url: body.results[i].url,
+                            title: body.results[i].title,
+                            author: body.results[i].byline,
+                            img: body.results[i].media[0]["media-metadata"][2].url,
+                            snippet: body.results[i].abstract
+                        };
+                        if (i < 11) {
+                            arr.push(capture);
+                        } else {
+                            arrTwo.push(capture);
+                        }
+                        // console.log(arr);
                     };
-                    if(i < 11) {
-                        arr.push(capture);  
-                    } else {
-                        arrTwo.push(capture); 
-                    }
+
                     // console.log(arr);
-                };
-                
-                console.log(arr);
-                console.log(arrTwo);
-                res.render("index", { items: one, two, three, arr, arrTwo });
-            });
+                    // console.log(arrTwo);
+                    res.render("index", { items: one, two, three, arr, arrTwo });
+                });
+            } else {
+                request.get({
+                    url: "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/7.json",
+                    qs: {
+                        'api-key': keys.most_popular
+                    },
+                }, function (err, response, body) {
+                    body = JSON.parse(body);
+                    let arr = [];
+                    let arrTwo = []
+                    for (let i = 0; i < body.results.length; i++) {
+                        let capture = {
+                            url: body.results[i].url,
+                            title: body.results[i].title,
+                            author: body.results[i].byline,
+                            img: body.results[i].media[0]["media-metadata"][2].url,
+                            snippet: body.results[i].abstract
+                        };
+                        if (i < 11) {
+                            arr.push(capture);
+                        } else {
+                            arrTwo.push(capture);
+                        }
+                        // console.log(arr);
+                    };
+
+                    // console.log(arr);
+                    // console.log(arrTwo);
+                    res.render("index", { items: obj, arr, arrTwo });
+                });
+            }
         });
-    // console.log(testOne);
 });
-
-function displayTopRow() {
-
-};
 
 router.get('/posting', function (req, res) {
     res.render("posting");
@@ -142,8 +169,14 @@ router.get('/userarticle/:id', function (req, res) {
 
 });
 
-router.get('/article/:title', function (req, res) {
+router.post("/article", function (req, res) {
+    console.log(req.body);
+    obj = req.body;
+});
 
+router.get('/article/:title', function (req, res) {
+    // console.log(req.body);
+    // res.send(req.body);
     request(obj.apiUrl, function (err, resp, body) {
         let $ = cheerio.load(body);
 

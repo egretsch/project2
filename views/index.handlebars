@@ -16,6 +16,7 @@
   </div>
 
   <div class="row topRow">
+    {{#if two}}
     <div id="sectionOne" class="col s12 m4 l5">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{items.id}}">
         <h5 class='nytTitle'>{{items.title}}</h5>
@@ -41,69 +42,53 @@
       </a>
       </a>
     </div>
+    {{/if}}
     <div class="row spacer"></div>
     <div class="row">
       <div id="nytStuffTest" class="col s12 m7 l7">
-        
-          {{#each arr}}
-          <a id='articleLink' class='hoverable' href='/article/{{title}}'>
+
+        {{#each arr}}
+        <a class='articleLink hoverable' data-url="{{url}}" data-name="{{title}}" data-author="{{author}}" data-image="{{img}}" data-snippet="{{snippet}}" href='/article/{{title}}'>
           <h5 class='nytTitle'>{{title}}</h5>
           <img class='nytImage' src="{{img}}">
           <p class='nytText'>{{snippet}}</p>
           <p class='nytAuthor'>{{author}}</p>
-          </a>
-          {{/each}}
-        
+        </a>
+        {{/each}}
+
       </div>
       <div id="nytStuff" class="col s12 m5 l5">
-          {{#each arrTwo}}
-          <a id='articleLink' class='hoverable' href='/article/{{title}}'>
+        {{#each arrTwo}}
+        <a class='articleLink hoverable' data-url="{{url}}" data-name="{{title}}" data-author="{{author}}" data-image="{{img}}" data-snippet="{{snippet}}" href='/article/{{title}}'>
           <h5 class='nytTitle'>{{title}}</h5>
           <img class='nytImage' src="{{img}}">
           <p class='nytText'>{{snippet}}</p>
           <p class='nytAuthor'>{{author}}</p>
-          </a>
-          {{/each}}
+        </a>
+        {{/each}}
       </div>
     </div>
   </div>
 
 
-  {{!--
-  <div class="moveDown">
-    <div class="container">
-      <div class="row">
-        <h1 class="col-sm-12 col-lg-12 justify-content-center text">!!Eat Dem Burgers!!</h1>
-      </div>
-    </div>
-    <main>
-
-    </main>
-    <div class="container text2">
-      <div class="row">
-        <div class="col-sm-6 col-lg-6 justify-content-center">
-          <form action="">
-            <div>
-              <label>Username:</label>
-              <input type="text" name="username" id="username" placeholder="Email" />
-            </div>
-            <div>
-              <label>Password:</label>
-              <input type="password" name="password" id="password" placeholder="Password" />
-            </div>
-            <div>
-              <button id="userLoggin">Login</button>
-            </div>
-            <div id="wrong">
-
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div> --}}
-
   <script>
+    $(".articleLink").on("click", function () {
+    let articleData = {
+      apiUrl: $(this).attr("data-url"),
+      title: $(this).attr("data-name"),
+      snippet: $(this).attr("data-snippet"),
+      author: $(this).attr("data-author"),
+      image: $(this).attr("data-image")
+    };
+    console.log(articleData);
+    
+    $.post("/article", articleData, function(data){
+      console.log(articleData);
+    })
+
+
+  });
+
     $(".posts-articles-individual").on('click', function () {
       let postsUserArticleId = $(this).attr('data');
       window.location.href = "/userarticle/" + postsUserArticleId;
