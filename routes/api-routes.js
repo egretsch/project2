@@ -17,7 +17,7 @@ router.get("/api/paradigm", function (req, res) {
 });
 
 router.get('/', function (req, res) {
-    console.log(res);
+    // console.log(res);
     db.Article.findAll()
         .then(function (response) {
             if (response.length > 2) {
