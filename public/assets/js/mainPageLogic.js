@@ -95,7 +95,7 @@ $(".posts").on('click', function () {
     $.get('/posts/' + localStoragePosts).then(function (req, res) {
         setTimeout(() => {
             window.location.href = "/posts/" + localStoragePosts;
-        }, 100);
+        }, 300);
     })
 })
 
@@ -104,7 +104,7 @@ $(".bookmarks").on('click', function () {
     $.get('/posts/' + localStoragePosts).then(function (req, res) {
         setTimeout(() => {
             window.location.href = "/bookmarks/" + localStoragePosts;
-        }, 100);
+        }, 300);
 
     })
 })
