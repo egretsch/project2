@@ -176,7 +176,7 @@ router.post("/articles/add", function (req, res) {
         img: req.body.img,
         body: req.body.body,
         snippet: req.body.snippet,
-        theCookie: req.body.theCookie
+        UserInfoId: req.body.UserInfoId
 
 
     }).then(function (dbArticle) {

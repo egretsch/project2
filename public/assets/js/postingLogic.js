@@ -14,7 +14,7 @@ $('.posting-button').on("click", function(){
         author : postingArticleAuthor,
         img : postingArticleImg,
         body : postingArticleBody,
-        theCookie: theCookie
+        UserInfoId: theCookie
     }
     
     console.log(newUserArticleObj);  
