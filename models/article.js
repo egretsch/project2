@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }
       },
-      theCookie: {
+      UserInfoId: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -44,5 +44,15 @@ module.exports = function(sequelize, DataTypes) {
       },
 
     });
+
+    Article.associate = function(models) {
+      Article.belongsTo(models.UserInfo, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    };
+  
+
     return Article;
   };

@@ -2,7 +2,7 @@
   <a href="/posting">
     <div class="col s2 x link offset-s4 bLink hoverable">Post New Article</div>
   </a>
-  <a href="/posts">
+  <a class="posts">
     <div class="col s2 x link bLink hoverable">Manage Articles</div>
   </a>
 </div>
@@ -14,38 +14,19 @@
 
 </div>
 
+{{#each items}}
 <div class="row">
-    <div class="col s8 offset-s2" style="border-bottom: double;">
-        <img src="https://via.placeholder.com/210x150" style="float: left; margin: 0px 10px 10px 0px">
-        <h5>This is a title for an article that someone wrote</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non est eget risus luctus sollicitudin. Mauris vestibulum
-            ut ante at convallis. In semper vulputate leo, a suscipit nunc auctor ornare. Maecenas hendrerit pulvinar vehicula.</p>
+    <div class="col s8 offset-s2 hoverable" style="border-bottom: double;">
+        <img src="{{img}}" height="150" width="210" style="float: left; margin: 5px 10px 5px 0px">
+        <h5>{{title}}</h5>
+        <p>{{snippet}}</p>
+        <button data="{{id}}" class="x small material-icons hoverable pages posts-articles-individual" style="float: right; margin: 5px 5px">pages</button>
+        <button data="{{id}}" class="x small material-icons hoverable delete-button" style="float: right; margin: 5px 5px">delete_forever</button>
+        <button data="{{id}}" class="x small material-icons hoverable edit-button" style="float: right; margin: 5px 5px">edit</button>
     </div>
 </div>
+{{/each}}
 
-<div class="row">
-    <div class="col s8 offset-s2" style="border-bottom: double;">
-        <img src="https://via.placeholder.com/210x150" style="float: left; margin: 0px 10px 10px 0px">
-        <h5>This is a title for an article that someone wrote</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non est eget risus luctus sollicitudin. Mauris vestibulum
-            ut ante at convallis. In semper vulputate leo, a suscipit nunc auctor ornare. Maecenas hendrerit pulvinar vehicula.</p>
-    </div>
-</div>
 
-<div class="row">
-    <div class="col s8 offset-s2" style="border-bottom: double;">
-        <img src="https://via.placeholder.com/210x150" style="float: left; margin: 0px 10px 10px 0px">
-        <h5>This is a title for an article that someone wrote</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non est eget risus luctus sollicitudin. Mauris vestibulum
-            ut ante at convallis. In semper vulputate leo, a suscipit nunc auctor ornare. Maecenas hendrerit pulvinar vehicula.</p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s8 offset-s2" style="border-bottom: double;">
-        <img src="https://via.placeholder.com/210x150" style="float: left; margin: 0px 10px 10px 0px">
-        <h5>This is a title for an article that someone wrote</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non est eget risus luctus sollicitudin. Mauris vestibulum
-            ut ante at convallis. In semper vulputate leo, a suscipit nunc auctor ornare. Maecenas hendrerit pulvinar vehicula.</p>
-    </div>
-</div>
+<script src="/assets/js/postsLogic.js"></script>
+<script src="/assets/js/deleteEditLogic.js"></script>
