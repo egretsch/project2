@@ -22,16 +22,19 @@ $(".logout").on('click', function () {
 
 $(".posts").on('click', function () {
     let localStoragePosts = localStorage.getItem("localThing");
-    window.location.href = "/posts/" + localStoragePosts;
-    $.get('/posts/' + localStoragePosts, function (req, res) {
-
+    $.get('/posts/' + localStoragePosts).then(function (req, res) {
+        setTimeout(() => {
+            window.location.href = "/posts/" + localStoragePosts;
+        }, 300);
     })
 })
 
 $(".bookmarks").on('click', function () {
     let localStoragePosts = localStorage.getItem("localThing");
-    window.location.href = "/bookmarks/" + localStoragePosts;
-    $.get('/posts/' + localStoragePosts, function (req, res) {
+    $.get('/posts/' + localStoragePosts).then(function (req, res) {
+        setTimeout(() => {
+            window.location.href = "/bookmarks/" + localStoragePosts;
+        }, 300);
 
     })
 })

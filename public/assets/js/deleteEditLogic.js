@@ -1,5 +1,5 @@
 $('.delete-button').on("click", function(){
-
+    let localStoragePosts = localStorage.getItem("localThing");
     let articleID = $(this).attr("data");
     
     let articleToDelete = {
@@ -12,12 +12,14 @@ $('.delete-button').on("click", function(){
       })
         .then(function(response) {
           console.log(response);
-          window.location.href = "/posts";
+          setTimeout(() => {
+            window.location.href = "/posts/" + localStoragePosts;
+        }, 300);
     });
 });
 
 $('.edit-button').on("click", function(){
-
+    let localStoragePosts = localStorage.getItem("localThing");
     let articleID = $(this).attr("data");
     
 
@@ -28,6 +30,7 @@ $('.edit-button').on("click", function(){
         .then(function(response) {
           console.log(response);
           window.location.href = "/edit/"+articleID;
+          
     });
 });
 
