@@ -16,7 +16,7 @@ $('.creating-user-button').on("click", function(){
     console.log(newUserLoginObj);
 
     $.post("/api/addUser", newUserLoginObj, function(data){
-        window.location.href = "/";
+        window.location.href = "/userloginpage";
       })
 
       

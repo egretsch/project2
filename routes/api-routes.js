@@ -49,9 +49,9 @@ router.get('/', function (req, res) {
     //             snippet: response[z].snippet
     //         }
 
-            // res.render("index", { items: one, two, three });
-            res.render("index");
-        // });
+    // res.render("index", { items: one, two, three });
+    res.render("index");
+    // });
 });
 
 router.get('/usercreatepage', function (req, res) {
@@ -68,9 +68,11 @@ router.get('/posting', function (req, res) {
 
 router.get('/posts', function (req, res) {
     //find posts where article equals
-    db.Article.findAll().then(function (data) {
-        res.render("posts", { items: data });
-    });
+
+
+db.Article.findAll().then(function (data) {
+    res.render("posts", { items: data });
+});
 
     // db.Article.findAll({
     //     where: {
@@ -85,10 +87,6 @@ router.get('/posts', function (req, res) {
     //         res.render("posts", { data: dbArticleUsable });
     //     });
 
-});
-
-router.post('/posts', function (req, res) {
-   console.log(req.body.localStoragePosts);
 });
 
 
@@ -128,7 +126,6 @@ router.get('/userarticle/:id', function (req, res) {
         }
     })
         .then(function (dbArticle) {
-            // console.log("Something happened on the backend");
             /* Need to set a new variable for the returned sequelize object because you can't
             use bracket notation in handlebars */
             let dbArticleUsable = dbArticle[0];
@@ -179,24 +176,22 @@ router.get('/article/:title', function (req, res) {
 });
 
 
-
-
 router.post("/article", function (req, res) {
     obj = req.body;
 });
 
 router.post("/articles/add", function (req, res) {
-    
+
     db.Article.create({
 
-            title: req.body.title,
-            author: req.body.author,
-            img: req.body.img,
-            body: req.body.body,
-            snippet: req.body.snippet,
-            theCookie: req.body.theCookie
+        title: req.body.title,
+        author: req.body.author,
+        img: req.body.img,
+        body: req.body.body,
+        snippet: req.body.snippet,
+        theCookie: req.body.theCookie
 
-        
+
     }).then(function (dbArticle) {
         res.send(dbArticle);
     })
@@ -271,7 +266,7 @@ router.post("/api/validate", function (req, res) {
                     res.status(404).send('Invalid username or password. Please try again');
                 } else {
                     console.log("it worked 2");
-                    
+
                     var userObj = {
                         id: data.dataValues.id,
                         email: data.dataValues.email,
@@ -281,7 +276,7 @@ router.post("/api/validate", function (req, res) {
                     console.log(userObj);
                     // req.session.user.loggedIn = true;
                     // req.session.user.currentUser = userObj;
-                    
+
                     res.json(userObj);
                 }
             });
