@@ -5,7 +5,7 @@ var cheerio = require('cheerio');
 const router = express.Router();
 var db = require("../models/index.js");
 let keys = require("../keys.js");
-let obj;
+// let obj;
 
 
 router.get("/api/paradigm", function (req, res) {
@@ -16,17 +16,6 @@ router.get("/api/paradigm", function (req, res) {
 });
 
 router.get('/', function (req, res) {
-
-    request.get({
-        url: "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/7.json",
-        qs: {
-          'api-key': keys.most_popular
-        },
-      }, function(err, response, body) {
-        body = JSON.parse(body);
-        console.log(body);
-      })
-    
 
     db.Article.findAll()
         .then(function (response) {
@@ -58,9 +47,43 @@ router.get('/', function (req, res) {
                 body: response[z].body,
                 snippet: response[z].snippet
             }
-            res.render("index", { items: one, two, three });
+
+            request.get({
+                url: "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/7.json",
+                qs: {
+                    'api-key': keys.most_popular
+                },
+            }, function (err, response, body) {
+                body = JSON.parse(body);
+                let arr = [];
+                let arrTwo = []
+                for (let i = 0; i < body.results.length; i++) {
+                    let capture = {
+                        url: body.results[i].url,
+                        title: body.results[i].title,
+                        author: body.results[i].byline,
+                        img: body.results[i].media[0]["media-metadata"][2].url,
+                        snippet: body.results[i].abstract
+                    };
+                    if(i < 11) {
+                        arr.push(capture);  
+                    } else {
+                        arrTwo.push(capture); 
+                    }
+                    // console.log(arr);
+                };
+                
+                console.log(arr);
+                console.log(arrTwo);
+                res.render("index", { items: one, two, three, arr, arrTwo });
+            });
         });
+    // console.log(testOne);
 });
+
+function displayTopRow() {
+
+};
 
 router.get('/posting', function (req, res) {
     res.render("posting");
@@ -86,6 +109,7 @@ router.get('/settings', function (req, res) {
 router.get('/userarticle', function (req, res) {
     res.render("userarticle");
 });
+
 router.get('/edit/:id', function (req, res) {
 
     db.Article.findAll({
@@ -100,7 +124,6 @@ router.get('/edit/:id', function (req, res) {
         });
 
 });
-
 
 router.get('/userarticle/:id', function (req, res) {
 
@@ -118,7 +141,6 @@ router.get('/userarticle/:id', function (req, res) {
         });
 
 });
-
 
 router.get('/article/:title', function (req, res) {
 
@@ -160,9 +182,9 @@ router.get('/article/:title', function (req, res) {
     });
 });
 
-router.post("/article", function (req, res) {
-    obj = req.body;
-});
+// router.post("/article", function (req, res) {
+//     obj = req.body;
+// });
 
 router.post("/articles/add", function (req, res) {
 
