@@ -118,7 +118,12 @@ router.get('/posting', function (req, res) {
 });
 
 router.get('/posts/:id', function (req, res) {
-    db.Article.findAll().then(function (data) {
+    db.Article.findAll({
+        where: {
+            UserInfoId: req.params.id
+        }
+    }).then(function (data) {
+        
 
         res.render("posts", { items: data });
     });
@@ -155,7 +160,6 @@ router.get('/edit/:id', function (req, res) {
 });
 
 router.get('/userarticle/:id', function (req, res) {
-
     db.Article.findAll({
         where: {
             id: req.params.id
