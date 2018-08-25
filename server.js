@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 var db = require("./models");
 var exphbs = require("express-handlebars");
 let articleRoutes = require('./routes/api-routes.js');
+var methodOverride = require('method-override');
 
 
 app.use(express.static("public"));
