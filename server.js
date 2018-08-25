@@ -8,7 +8,7 @@ let articleRoutes = require('./routes/api-routes.js');
 var methodOverride = require('method-override');
 
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
@@ -23,8 +23,8 @@ app.use(articleRoutes);
 
 var PORT = process.env.PORT || 8080;
 // Start our server so that it can begin listening to client requests.
-// db.sequelize.sync({ force: false }).then(function () {
+db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
-// });
+});
