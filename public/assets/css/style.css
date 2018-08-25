@@ -116,6 +116,12 @@ body{
   padding: 8px 8px 8px 8px;
   /*border is optional*/
   cursor: pointer;
+  opacity: 0.2;
+  transition: all 0.4s;
+}
+
+#bookmarkThang:hover{
+  opacity: 1;
 }
 
 
