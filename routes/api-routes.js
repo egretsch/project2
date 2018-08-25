@@ -21,6 +21,20 @@ router.get('/', function (req, res) {
     db.Article.findAll()
         .then(function (response) {
             if (response.length > 2) {
+                let spacerArticles = [];
+
+                for (let j = 0; j < response.length-3; j++) {
+                    let spacer = {
+                        id: response[j].id,
+                        title: response[j].title,
+                        author: response[j].author,
+                        img: response[j].img,
+                        body: response[j].body,
+                        snippet: response[j].snippet
+                    }
+                    spacerArticles.push(spacer);                
+                }
+
                 let x = response.length - 1;
                 let y = x - 1;
                 let z = x - 2;
@@ -49,6 +63,7 @@ router.get('/', function (req, res) {
                     body: response[z].body,
                     snippet: response[z].snippet
                 }
+                
 
                 request.get({
                     url: "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/7.json",
@@ -77,7 +92,7 @@ router.get('/', function (req, res) {
 
                     // console.log(arr);
                     // console.log(arrTwo);
-                    res.render("index", { items: one, two, three, arr, arrTwo });
+                    res.render("index", { items: one, two, three, arr, arrTwo, spacerArticles });
                 });
             } else {
                 request.get({
