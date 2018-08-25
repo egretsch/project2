@@ -16,7 +16,7 @@ app.set("view engine", "handlebars");
 app.use(articleRoutes);
 
 
-
+app.use("/", routes);
 
 
 
