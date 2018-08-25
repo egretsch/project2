@@ -7,14 +7,14 @@ var methodOverride = require('method-override');
 let articleRoutes = require('./routes/api-routes.js');
 
 
-app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use("/", articleRoutes);
-
+app.use(express.static(__dirname + "/public"));
+app.use(favicon(__dirname + "/public/favicon.ico"));
 
 
 var PORT = process.env.JAWSDB_URL || 8080;
