@@ -9,7 +9,7 @@ if (theCookie === null) {
     $('.balls').append(
         "<ul id='dropdown1' class='dropdown-content'><li><a href='/userloginpage'>Log In</a></li><li><a href='/usercreatepage'>Create Account</a></li>");
 } else {
-    $('.balls').append('<ul id="dropdown1" class="dropdown-content"><li><a href="/posting">Submit A Post</a></li><li><a class="posts">Your Articles</a></li><li><a class="bookmarks">Bookmarks</a></li><li><a href="/settings">Edit Account</a></li><li><a class="logout">Logout</a></li></ul>');
+    $('.balls').append('<ul id="dropdown1" class="dropdown-content"><li><a href="/posting">Submit A Post</a></li><li><a class="posts">Your Articles</a></li><li><a class="bookmarks">Bookmarks</a></li><li><a class="logout">Logout</a></li></ul>');
     console.log("Eat Away!");
 }
 

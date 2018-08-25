@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row catagories">
     <div class="col s4 m2 l2 hoverable">World</div>
     <div class="col s4 m2 l2 hoverable">Local</div>
@@ -14,13 +13,12 @@
     <div class="col s4 m2 l2 hoverable">Other</div>
     <div class="col s4 m2 l2 hoverable">For Fun</div>
   </div>
-
   <div class="row topRow">
     {{#if two}}
     <div id="sectionOne" class="col s12 m4 l5">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{items.id}}">
         <h5 class='nytTitle'>{{items.title}}</h5>
-        <img src="{{items.img}}" width="100%" height="300px">
+        <img src="{{items.img}}" width="100%" height="250px">
         <p class='nytText'>{{items.snippet}}</p>
         <p class='nytAuthor'>By {{items.author}}</p>
       </a>
@@ -28,7 +26,7 @@
     <div id="sectionTwo" class="col s12 m4 l3">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{two.id}}">
         <h5 class='nytTitle'>{{two.title}}</h5>
-        <img class='nytImage' src="{{two.img}}" width="100%" height="250px">
+        <img class='nytImage' src="{{two.img}}" width="100%" height="200px">
         <p class='nytText'>{{two.snippet}}</p>
         <p class='nytAuthor'>By {{two.author}}</p>
       </a>
@@ -36,19 +34,36 @@
     <div id="sectionThree" class="col s12 m4 l4">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{three.id}}">
         <h5 class='nytTitle'>{{three.title}}</h5>
-        <img src="{{three.img}}" width="100%" height="300px">
+        <img src="{{three.img}}" width="100%" height="250px">
         <p class='nytText'>{{three.snippet}}</p>
         <p class='nytAuthor'>By {{three.author}}</p>
       </a>
-      </a>
     </div>
     {{/if}}
-    <div class="row spacer"></div>
+    <div class="row"></div>
+    <div class="container">
+      <div class="row">
+        {{#each spacerArticles}}
+        <div class="other">
+          <a id='articleLink' class='hoverable posts-articles-individual link x' data="{{id}}">
+            <h5>{{title}}</h5>
+            <img src="{{img}}" width="100%" height="33%">
+            <p>{{snippet}}</p>
+            <p>By {{author}}</p>
+          </a>
+        </div>
+        {{!-- <div class="col s0 m0 l1"></div> --}}
+        {{/each}}
+      </div>
+    </div>
+    <div class="row"></div>
+
     <div class="row">
       <div id="nytStuffTest" class="col s12 m7 l7">
 
         {{#each arr}}
-        <a class='articleLink hoverable' data-url="{{url}}" data-name="{{title}}" data-author="{{author}}" data-image="{{img}}" data-snippet="{{snippet}}" href='/article/{{title}}'>
+        <a class='articleLink hoverable' data-url="{{url}}" data-name="{{title}}" data-author="{{author}}" data-image="{{img}}" data-snippet="{{snippet}}"
+          href='/article/{{title}}'>
           <h5 class='nytTitle'>{{title}}</h5>
           <img class='nytImage' src="{{img}}">
           <p class='nytText'>{{snippet}}</p>
@@ -59,7 +74,8 @@
       </div>
       <div id="nytStuff" class="col s12 m5 l5">
         {{#each arrTwo}}
-        <a class='articleLink hoverable' data-url="{{url}}" data-name="{{title}}" data-author="{{author}}" data-image="{{img}}" data-snippet="{{snippet}}" href='/article/{{title}}'>
+        <a class='articleLink hoverable' data-url="{{url}}" data-name="{{title}}" data-author="{{author}}" data-image="{{img}}" data-snippet="{{snippet}}"
+          href='/article/{{title}}'>
           <h5 class='nytTitle'>{{title}}</h5>
           <img class='nytImage' src="{{img}}">
           <p class='nytText'>{{snippet}}</p>
@@ -73,21 +89,21 @@
 
   <script>
     $(".articleLink").on("click", function () {
-    let articleData = {
-      apiUrl: $(this).attr("data-url"),
-      title: $(this).attr("data-name"),
-      snippet: $(this).attr("data-snippet"),
-      author: $(this).attr("data-author"),
-      image: $(this).attr("data-image")
-    };
-    console.log(articleData);
-    
-    $.post("/article", articleData, function(data){
+      let articleData = {
+        apiUrl: $(this).attr("data-url"),
+        title: $(this).attr("data-name"),
+        snippet: $(this).attr("data-snippet"),
+        author: $(this).attr("data-author"),
+        image: $(this).attr("data-image")
+      };
       console.log(articleData);
-    })
+
+      $.post("/article", articleData, function (data) {
+        console.log(articleData);
+      })
 
 
-  });
+    });
 
     $(".posts-articles-individual").on('click', function () {
       let postsUserArticleId = $(this).attr('data');

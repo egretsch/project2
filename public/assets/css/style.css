@@ -4,10 +4,6 @@ html,
 body{
     color: rgb(2, 0, 0);
     font-family: 'Ubuntu', 'Times New Roman', Times, serif;
-    /* background-image: url("https://pixabay.com/get/eb35b80f29f6073ed1534705fb094f93e477e3d41eac104496f5c17aa1e8b5ba/ribbon-2090126_1920.jpg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: 100% 100%; */
 }
 
 .link
@@ -69,7 +65,6 @@ body{
   position: sticky;
   top: 0px;
   background: rgba(0, 0, 0, .9);
-  /* border-bottom: 3px solid rgba(141, 141, 141, 0.842); */
 }
 
 .navBarTextWrapper{
@@ -229,6 +224,20 @@ body{
   margin-bottom: 100px;
 }
 
+.other{
+  float: left; 
+  display: inline; 
+  width: 47%; 
+  margin-left: 1%;
+}
 
+
+@media screen and (max-width: 1000px) {
+.other{
+  width: 100%;
+  float: none;
+  display: block;
+}
+}
 
 /* CHANCE CSS ABOVE */
