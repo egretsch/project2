@@ -8,3 +8,9 @@ $(".posts-articles-individual").on('click', function () {
         console.log("I sent something possibly");
     })
 })
+
+
+$(".posts-bookmarks-individual").on('click', function () {
+    let postsUserArticleId = $(this).attr('data');
+    window.location.href = postsUserArticleId;
+})

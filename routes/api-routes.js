@@ -131,6 +131,7 @@ router.get('/posts/:id', function (req, res) {
 
 
 router.get('/bookmarks/:id', function (req, res) {
+    console.log(req.body.currentURL);
     db.Bookmark.findAll({
         where: {
             UserInfoId: req.params.id
@@ -139,6 +140,28 @@ router.get('/bookmarks/:id', function (req, res) {
         
 
         res.render("bookmarks", { items: data });
+    });
+});
+
+router.post('/bookmarks', function (req, res){
+    let UserInfoIdReturned = parseInt(req.body.localStoragePosts);
+    let parsedUserId = req.body.currentURL.split('/')[4];
+    let link = req.body.currentURL;
+    console.log(parsedUserId);
+    db.Article.findOne({
+        where: {
+            id: parsedUserId
+        }
+    }).then(function (data){
+      
+        db.Bookmark.create({
+            title: data.title,
+            author: data.author,
+            img: data.img,
+            snippet: data.snippet,
+            UserInfoId: UserInfoIdReturned,
+            link: link
+        });
     });
 });
 
@@ -229,14 +252,12 @@ router.get('/article/:title', function (req, res) {
 router.post("/articles/add", function (req, res) {
 
     db.Article.create({
-
         title: req.body.title,
         author: req.body.author,
         img: req.body.img,
         body: req.body.body,
         snippet: req.body.snippet,
         UserInfoId: req.body.UserInfoId
-
 
     }).then(function (dbArticle) {
         res.send(dbArticle);
@@ -253,6 +274,18 @@ router.delete("/article/delete/:id", function (req, res) {
             res.json(dbPost);
         });
 });
+
+router.delete("/bookmarks/delete/:id", function (req, res) {
+    db.Bookmark.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(function (dbPost) {
+            res.json(dbPost);
+        });
+});
+
 
 router.put("/article/update/:id", function (req, res) {
     console.log(req.body.body)

@@ -31,7 +31,7 @@ $(".posts").on('click', function () {
 
 $(".bookmarks").on('click', function () {
     let localStoragePosts = localStorage.getItem("localThing");
-    $.get('/posts/' + localStoragePosts).then(function (req, res) {
+    $.get('/bookmarks/' + localStoragePosts).then(function (req, res) {
         setTimeout(() => {
             window.location.href = "/bookmarks/" + localStoragePosts;
         }, 300);
