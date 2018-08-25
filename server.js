@@ -6,7 +6,7 @@ var db = require("./models");
 let cors = require('cors');
 // Set Handlebars.
 var exphbs = require("express-handlebars");
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3000;
 let articleRoutes = require('./routes/api-routes.js');
 
 // app.use(session({
