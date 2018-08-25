@@ -359,7 +359,7 @@ module.exports = function (app) {
           } else {
             console.log("it worked 2");
 
-            var userObj = {
+            let userObj = {
               id: data.dataValues.id,
               email: data.dataValues.email,
               first_name: data.dataValues.first_name,

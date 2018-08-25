@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var UserInfo = sequelize.define("UserInfo", { 
+  let UserInfo = sequelize.define("UserInfo", { 
     email: {
       type: DataTypes.STRING,
       allowNull: false,

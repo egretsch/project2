@@ -231,6 +231,12 @@ body{
   margin-left: 1%;
 }
 
+.nytLogo{
+  position: fixed;
+  bottom: 1%;
+  left: 1%;
+}
+
 
 @media screen and (max-width: 1000px) {
 .other{
