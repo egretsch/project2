@@ -4,10 +4,6 @@ html,
 body{
     color: rgb(2, 0, 0);
     font-family: 'Ubuntu', 'Times New Roman', Times, serif;
-    /* background-image: url("https://pixabay.com/get/eb35b80f29f6073ed1534705fb094f93e477e3d41eac104496f5c17aa1e8b5ba/ribbon-2090126_1920.jpg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: 100% 100%; */
 }
 
 .link
@@ -102,6 +98,57 @@ body{
   text-align: center;
   font-size: 40px;
   font-weight: bold;
+}
+
+#bookmarkThang{
+  font-size: 50px;
+  position: sticky;
+  top: 350px;
+  margin-left: 3%;
+  background:none!important;
+  color:inherit;
+  border-radius: 30%;
+  border: 2px solid rgba(0, 0, 0, 0.637);
+  padding: 8px 8px 8px 8px;
+  /*border is optional*/
+  cursor: pointer;
+  opacity: 0.2;
+  transition: all 0.4s;
+}
+
+#bookmarkThang:hover{
+  opacity: 1;
+}
+
+
+@media only screen and (max-width: 965px) {
+  #bookmarkThang {
+      margin-left: 2%;
+      font-size: 50px;
+
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  #bookmarkThang {
+      margin-left: 1%;
+      font-size: 50px;
+
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  #bookmarkThang {
+      margin-top: 50px;
+      margin-left: 42%;
+      font-size: 60px;
+      position: inherit;
+  }
+}
+
+
+#user-article-wrapper{
+  margin: 0 auto;
 }
 
 /* CHANCE CSS BELOW */

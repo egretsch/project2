@@ -21,6 +21,7 @@ $('.posting-button').on("click", function(){
         
 
     $.post("/articles/add", newUserArticleObj, function(response){
+        
         console.log(response);
     });
 });

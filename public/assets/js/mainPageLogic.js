@@ -6,7 +6,7 @@ $(document).ready(function () {
 let theCookie = localStorage.getItem("localThing");
 if (theCookie === null) {
     console.log("No Cookies For You!");
-    $('.container').append(
+    $('.balls').append(
         "<ul id='dropdown1' class='dropdown-content'><li><a href='/userloginpage'>Log In</a></li><li><a href='/usercreatepage'>Create Account</a></li>");
 } else {
     $('.balls').append('<ul id="dropdown1" class="dropdown-content"><li><a href="/posting">Submit A Post</a></li><li><a class="posts">Your Articles</a></li><li><a class="bookmarks">Bookmarks</a></li><li><a href="/settings">Edit Account</a></li><li><a class="logout">Logout</a></li></ul>');
@@ -31,7 +31,7 @@ $(".posts").on('click', function () {
 
 $(".bookmarks").on('click', function () {
     let localStoragePosts = localStorage.getItem("localThing");
-    $.get('/posts/' + localStoragePosts).then(function (req, res) {
+    $.get('/bookmarks/' + localStoragePosts).then(function (req, res) {
         setTimeout(() => {
             window.location.href = "/bookmarks/" + localStoragePosts;
         }, 300);
