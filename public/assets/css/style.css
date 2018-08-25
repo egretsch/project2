@@ -65,7 +65,6 @@ body{
   position: sticky;
   top: 0px;
   background: rgba(0, 0, 0, .9);
-  /* border-bottom: 3px solid rgba(141, 141, 141, 0.842); */
 }
 
 .navBarTextWrapper{
@@ -229,7 +228,7 @@ body{
   float: left; 
   display: inline; 
   width: 47%; 
-  margin-left: 10px;
+  margin-left: 1%;
 }
 
 

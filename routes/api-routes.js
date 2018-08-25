@@ -17,7 +17,6 @@ router.get("/api/paradigm", function (req, res) {
 });
 
 router.get('/', function (req, res) {
-    // console.log(res);
     db.Article.findAll()
         .then(function (response) {
             if (response.length > 2) {
@@ -117,11 +116,7 @@ router.get('/', function (req, res) {
                         } else {
                             arrTwo.push(capture);
                         }
-                        // console.log(arr);
                     };
-
-                    // console.log(arr);
-                    // console.log(arrTwo);
                     res.render("index", { items: obj, arr, arrTwo });
                 });
             }
@@ -178,10 +173,6 @@ router.post('/bookmarks', function (req, res){
             link: link
         });
     });
-});
-
-router.get('/settings', function (req, res) {
-    res.render("settings");
 });
 
 router.get('/userarticle', function (req, res) {
