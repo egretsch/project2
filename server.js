@@ -1,10 +1,8 @@
 var express = require("express");
-var session = require('express-session');
 var app = express();
 var bodyParser = require("body-parser");
 var db = require("./models");
 var exphbs = require("express-handlebars");
-let articleRoutes = require('./routes/api-routes.js');
 var methodOverride = require('method-override');
 
 
@@ -14,6 +12,7 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+let articleRoutes = require('./routes/api-routes.js');
 app.use(articleRoutes);
 
 
@@ -21,10 +20,10 @@ app.use(articleRoutes);
 
 
 
-var PORT = process.env.PORT || 8080;
+var port = process.env.port || 8080;
 // Start our server so that it can begin listening to client requests.
 db.sequelize.sync({ force: false }).then(function () {
-  app.listen(PORT, function () {
+  app.listen(port, function () {
     console.log("App listening on PORT " + PORT);
   });
 });
