@@ -131,7 +131,13 @@ router.get('/posts/:id', function (req, res) {
 
 
 router.get('/bookmarks/:id', function (req, res) {
-    db.Article.findAll().then(function (data) {
+    db.Bookmark.findAll({
+        where: {
+            UserInfoId: req.params.id
+        }
+    }).then(function (data) {
+        
+
         res.render("bookmarks", { items: data });
     });
 });

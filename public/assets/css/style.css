@@ -104,6 +104,51 @@ body{
   font-weight: bold;
 }
 
+#bookmarkThang{
+  font-size: 50px;
+  position: sticky;
+  top: 350px;
+  margin-left: 3%;
+  background:none!important;
+  color:inherit;
+  border-radius: 30%;
+  border: 2px solid rgba(0, 0, 0, 0.637);
+  padding: 8px 8px 8px 8px;
+  /*border is optional*/
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 965px) {
+  #bookmarkThang {
+      margin-left: 2%;
+      font-size: 50px;
+
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  #bookmarkThang {
+      margin-left: 1%;
+      font-size: 50px;
+
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  #bookmarkThang {
+      margin-top: 50px;
+      margin-left: 42%;
+      font-size: 60px;
+      position: inherit;
+  }
+}
+
+
+#user-article-wrapper{
+  margin: 0 auto;
+}
+
 /* CHANCE CSS BELOW */
 
 /* Shadow */
