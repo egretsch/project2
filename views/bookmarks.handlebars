@@ -2,7 +2,11 @@
   <a href="/posting">
     <div class="col s2 x link offset-s4 bLink hoverable">Post New Article</div>
   </a>
+<<<<<<< HEAD
   <a href="/posts">
+=======
+  <a class="posts">
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
     <div class="col s2 x link bLink hoverable">Manage Articles</div>
   </a>
 </div>
@@ -14,6 +18,7 @@
 
 </div>
 
+<<<<<<< HEAD
 
 <div class="container">
 <div class="login-page">
@@ -69,3 +74,21 @@
             ut ante at convallis. In semper vulputate leo, a suscipit nunc auctor ornare. Maecenas hendrerit pulvinar vehicula.</p>
     </div>
 </div> --}}
+=======
+{{#each items}}
+<div class="row">
+    <div class="col s8 offset-s2 hoverable" style="border-bottom: double;">
+        <img src="{{img}}" height="150" width="210" style="float: left; margin: 5px 10px 5px 0px">
+        <h5>{{title}}</h5>
+        <p>{{snippet}}</p>
+        <button data="{{id}}" class="x small material-icons hoverable pages posts-articles-individual" style="float: right; margin: 5px 5px">pages</button>
+        <button data="{{id}}" class="x small material-icons hoverable delete-button" style="float: right; margin: 5px 5px">delete_forever</button>
+        <button data="{{id}}" class="x small material-icons hoverable edit-button" style="float: right; margin: 5px 5px">edit</button>
+    </div>
+</div>
+{{/each}}
+
+
+<script src="/assets/js/postsLogic.js"></script>
+<script src="/assets/js/deleteEditLogic.js"></script>
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7

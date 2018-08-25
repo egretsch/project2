@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div class="container">
+=======
+{{!-- <div class="container"> --}}
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
 
   <div class="row catagories">
     <div class="col s4 m2 l2 hoverable">World</div>
@@ -16,6 +20,10 @@
   </div>
 
   <div class="row topRow">
+<<<<<<< HEAD
+=======
+    {{#if two}}
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
     <div id="sectionOne" class="col s12 m4 l5">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{items.id}}">
         <h5 class='nytTitle'>{{items.title}}</h5>
@@ -41,10 +49,15 @@
       </a>
       </a>
     </div>
+<<<<<<< HEAD
+=======
+    {{/if}}
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
     <div class="row spacer"></div>
     <div class="row">
       <div id="nytStuffTest" class="col s12 m7 l7">
 
+<<<<<<< HEAD
       </div>
       <div id="nytStuff" class="col s12 m5 l5">
 
@@ -86,6 +99,50 @@
   </div> --}}
 
   <script>
+=======
+        {{#each arr}}
+        <a class='articleLink hoverable' data-url="{{url}}" data-name="{{title}}" data-author="{{author}}" data-image="{{img}}" data-snippet="{{snippet}}" href='/article/{{title}}'>
+          <h5 class='nytTitle'>{{title}}</h5>
+          <img class='nytImage' src="{{img}}">
+          <p class='nytText'>{{snippet}}</p>
+          <p class='nytAuthor'>{{author}}</p>
+        </a>
+        {{/each}}
+
+      </div>
+      <div id="nytStuff" class="col s12 m5 l5">
+        {{#each arrTwo}}
+        <a class='articleLink hoverable' data-url="{{url}}" data-name="{{title}}" data-author="{{author}}" data-image="{{img}}" data-snippet="{{snippet}}" href='/article/{{title}}'>
+          <h5 class='nytTitle'>{{title}}</h5>
+          <img class='nytImage' src="{{img}}">
+          <p class='nytText'>{{snippet}}</p>
+          <p class='nytAuthor'>{{author}}</p>
+        </a>
+        {{/each}}
+      </div>
+    </div>
+  {{!-- </div> --}}
+
+
+  <script>
+    $(".articleLink").on("click", function () {
+    let articleData = {
+      apiUrl: $(this).attr("data-url"),
+      title: $(this).attr("data-name"),
+      snippet: $(this).attr("data-snippet"),
+      author: $(this).attr("data-author"),
+      image: $(this).attr("data-image")
+    };
+    console.log(articleData);
+    
+    $.post("/article", articleData, function(data){
+      console.log(articleData);
+    })
+
+
+  });
+
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
     $(".posts-articles-individual").on('click', function () {
       let postsUserArticleId = $(this).attr('data');
       window.location.href = "/userarticle/" + postsUserArticleId;

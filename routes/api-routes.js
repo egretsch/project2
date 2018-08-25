@@ -5,6 +5,10 @@ var cheerio = require('cheerio');
 const router = express.Router();
 var db = require("../models/index.js");
 let keys = require("../keys.js");
+<<<<<<< HEAD
+=======
+var bcrypt = require('bcrypt');
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
 let obj;
 
 
@@ -16,6 +20,7 @@ router.get("/api/paradigm", function (req, res) {
 });
 
 router.get('/', function (req, res) {
+<<<<<<< HEAD
 
     request.get({
         url: "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/7.json",
@@ -59,6 +64,101 @@ router.get('/', function (req, res) {
                 snippet: response[z].snippet
             }
             res.render("index", { items: one, two, three });
+=======
+    console.log(res);
+    db.Article.findAll()
+        .then(function (response) {
+            if (response.length > 2) {
+                let x = response.length - 1;
+                let y = x - 1;
+                let z = x - 2;
+
+                let one = {
+                    id: response[x].id,
+                    title: response[x].title,
+                    author: response[x].author,
+                    img: response[x].img,
+                    body: response[x].body,
+                    snippet: response[x].snippet
+                }
+                let two = {
+                    id: response[y].id,
+                    title: response[y].title,
+                    author: response[y].author,
+                    img: response[y].img,
+                    body: response[y].body,
+                    snippet: response[y].snippet
+                }
+                let three = {
+                    id: response[z].id,
+                    title: response[z].title,
+                    author: response[z].author,
+                    img: response[z].img,
+                    body: response[z].body,
+                    snippet: response[z].snippet
+                }
+
+                request.get({
+                    url: "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/7.json",
+                    qs: {
+                        'api-key': keys.most_popular
+                    },
+                }, function (err, response, body) {
+                    body = JSON.parse(body);
+                    let arr = [];
+                    let arrTwo = []
+                    for (let i = 0; i < body.results.length; i++) {
+                        let capture = {
+                            url: body.results[i].url,
+                            title: body.results[i].title,
+                            author: body.results[i].byline,
+                            img: body.results[i].media[0]["media-metadata"][2].url,
+                            snippet: body.results[i].abstract
+                        };
+                        if (i < 11) {
+                            arr.push(capture);
+                        } else {
+                            arrTwo.push(capture);
+                        }
+                        // console.log(arr);
+                    };
+
+                    // console.log(arr);
+                    // console.log(arrTwo);
+                    res.render("index", { items: one, two, three, arr, arrTwo });
+                });
+            } else {
+                request.get({
+                    url: "https://api.nytimes.com/svc/mostpopular/v2/mostshared/all-sections/7.json",
+                    qs: {
+                        'api-key': keys.most_popular
+                    },
+                }, function (err, response, body) {
+                    body = JSON.parse(body);
+                    let arr = [];
+                    let arrTwo = []
+                    for (let i = 0; i < body.results.length; i++) {
+                        let capture = {
+                            url: body.results[i].url,
+                            title: body.results[i].title,
+                            author: body.results[i].byline,
+                            img: body.results[i].media[0]["media-metadata"][2].url,
+                            snippet: body.results[i].abstract
+                        };
+                        if (i < 11) {
+                            arr.push(capture);
+                        } else {
+                            arrTwo.push(capture);
+                        }
+                        // console.log(arr);
+                    };
+
+                    // console.log(arr);
+                    // console.log(arrTwo);
+                    res.render("index", { items: obj, arr, arrTwo });
+                });
+            }
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
         });
 });
 
@@ -66,6 +166,7 @@ router.get('/posting', function (req, res) {
     res.render("posting");
 });
 
+<<<<<<< HEAD
 router.get('/posts', function (req, res) {
 
     db.Article.findAll().then(function (data) {
@@ -77,6 +178,20 @@ router.get('/posts', function (req, res) {
 
 router.get('/bookmarks', function (req, res) {
     res.render("bookmarks");
+=======
+router.get('/posts/:id', function (req, res) {
+    db.Article.findAll().then(function (data) {
+
+        res.render("posts", { items: data });
+    });
+});
+
+
+router.get('/bookmarks/:id', function (req, res) {
+    db.Article.findAll().then(function (data) {
+        res.render("bookmarks", { items: data });
+    });
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
 });
 
 router.get('/settings', function (req, res) {
@@ -86,6 +201,10 @@ router.get('/settings', function (req, res) {
 router.get('/userarticle', function (req, res) {
     res.render("userarticle");
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
 router.get('/edit/:id', function (req, res) {
 
     db.Article.findAll({
@@ -101,7 +220,10 @@ router.get('/edit/:id', function (req, res) {
 
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
 router.get('/userarticle/:id', function (req, res) {
 
     db.Article.findAll({
@@ -110,7 +232,10 @@ router.get('/userarticle/:id', function (req, res) {
         }
     })
         .then(function (dbArticle) {
+<<<<<<< HEAD
             // console.log("Something happened on the backend");
+=======
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
             /* Need to set a new variable for the returned sequelize object because you can't
             use bracket notation in handlebars */
             let dbArticleUsable = dbArticle[0];
@@ -119,9 +244,20 @@ router.get('/userarticle/:id', function (req, res) {
 
 });
 
+<<<<<<< HEAD
 
 router.get('/article/:title', function (req, res) {
 
+=======
+router.post("/article", function (req, res) {
+    console.log(req.body);
+    obj = req.body;
+});
+
+router.get('/article/:title', function (req, res) {
+    // console.log(req.body);
+    // res.send(req.body);
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
     request(obj.apiUrl, function (err, resp, body) {
         let $ = cheerio.load(body);
 
@@ -160,6 +296,7 @@ router.get('/article/:title', function (req, res) {
     });
 });
 
+<<<<<<< HEAD
 router.post("/article", function (req, res) {
     obj = req.body;
 });
@@ -167,11 +304,24 @@ router.post("/article", function (req, res) {
 router.post("/articles/add", function (req, res) {
 
     db.Article.create({
+=======
+router.post("/articles/add", function (req, res) {
+
+    db.Article.create({
+
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
         title: req.body.title,
         author: req.body.author,
         img: req.body.img,
         body: req.body.body,
+<<<<<<< HEAD
         snippet: req.body.snippet
+=======
+        snippet: req.body.snippet,
+        UserInfoId: req.body.UserInfoId
+
+
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
     }).then(function (dbArticle) {
         res.send(dbArticle);
     })
@@ -201,8 +351,82 @@ router.put("/article/update/:id", function (req, res) {
         });
 });
 
+<<<<<<< HEAD
 
 
 
+=======
+router.get('/usercreatepage', function (req, res) {
+    res.render("usercreatepage");
+});
+
+router.get('/userloginpage', function (req, res) {
+    res.render("userloginpage");
+});
+
+////////////Ed and Tyler's Logic/////////////////////////////////////////////////////////////////////////////////
+
+// Create all our routes and set up logic within those routes where required.
+
+router.post("/api/addUser", function (req, res) {
+    // console.log(req.body);
+
+    const saltRounds = 10;
+    const myPlaintextPassword = req.body.password;
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+        bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
+            req.body.password = hash;
+            db.UserInfo.create(req.body).then(function (data) {
+                res.json(data);
+            });
+        });
+
+    });
+
+
+});
+
+
+
+router.post("/api/validate", function (req, res) {
+    db.UserInfo.findOne({
+        where: {
+            email: req.body.email
+        },
+    }).then(function (data) {
+        console.log(data.dataValues + "This is the datavalues");
+        console.log(req.body.email + "This is the email");
+        console.log(data.dataValues.email + "This is the email");
+        console.log(data.dataValues.password + "This is the password");
+        if (!data && typeof data === object) {
+            res.status(404).send('Invalid username or password. Please try again');
+        } else {
+            bcrypt.compare(req.body.password, data.dataValues.password).then(function (bcryptRes) {
+                // res == true
+
+                if (!bcryptRes) {
+                    console.log("it worked1");
+                    res.status(404).send('Invalid username or password. Please try again');
+                } else {
+                    console.log("it worked 2");
+
+                    var userObj = {
+                        id: data.dataValues.id,
+                        email: data.dataValues.email,
+                        first_name: data.dataValues.first_name,
+                        last_name: data.dataValues.last_name
+                    }
+                    console.log(userObj);
+                    // req.session.user.loggedIn = true;
+                    // req.session.user.currentUser = userObj;
+
+                    res.json(userObj);
+                }
+            });
+        }
+
+    });
+});
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
 
 module.exports = router;

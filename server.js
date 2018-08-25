@@ -1,5 +1,9 @@
 var express = require("express");
+<<<<<<< HEAD
 var session = require('express-session')
+=======
+var session = require('express-session');
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
 var app = express();
 var bodyParser = require("body-parser");
 var db = require("./models");
@@ -7,10 +11,28 @@ let cors = require('cors');
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 var PORT = process.env.PORT || 8080;
+<<<<<<< HEAD
 let userRoutes = require('./controllers/loggedin_controller.js');
 let articleRoutes = require('./routes/api-routes.js');
 
 
+=======
+let articleRoutes = require('./routes/api-routes.js');
+
+// app.use(session({
+//   secret: process.env.SESSIONSECRET || 'cat',
+//   resave: false,
+//   saveUninitialized: true
+// }));
+
+// function userSetup(req, res, next) {
+//   if (!req.session.user) {
+//     req.session.user = {};
+//     req.session.user.loggedIn = false;
+//   }
+//   next();
+// }
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -20,6 +42,7 @@ app.use(bodyParser.json());
 // app.use(userSetup);
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+<<<<<<< HEAD
 app.use(userRoutes);
 app.use(articleRoutes);
 // app.use(session({
@@ -35,6 +58,11 @@ app.use(articleRoutes);
 //   }
 //   next()
 // }
+=======
+app.use(articleRoutes);
+
+
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
 
 
 

@@ -1,4 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
+<<<<<<< HEAD
   var UserInfo = sequelize.define("UserInfo", {
     id: {
       type: DataTypes.INTEGER,
@@ -7,6 +8,9 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true
 
     }, 
+=======
+  var UserInfo = sequelize.define("UserInfo", { 
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -37,5 +41,15 @@ module.exports = function (sequelize, DataTypes) {
     }
     
   });
+<<<<<<< HEAD
+=======
+
+  UserInfo.associate = function(models) {
+    UserInfo.hasMany(models.Article, {
+      onDelete: "cascade"
+    });
+  };
+
+>>>>>>> 3ebe50734b603e9380fa4a4479dc9f32c225f4c7
   return UserInfo;
 };
