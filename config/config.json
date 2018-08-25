@@ -1,6 +1,9 @@
 {
   "development": {
-    "use_env_variable": "JAWSDB_URL",
+    "username": "root",
+    "password": "password",
+    "database": "paradigmtest",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
