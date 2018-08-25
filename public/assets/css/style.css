@@ -178,6 +178,20 @@ body{
   margin-bottom: 100px;
 }
 
+.other{
+  float: left; 
+  display: inline; 
+  width: 47%; 
+  margin-left: 10px;
+}
 
+
+@media screen and (max-width: 1000px) {
+.other{
+  width: 100%;
+  float: none;
+  display: block;
+}
+}
 
 /* CHANCE CSS ABOVE */

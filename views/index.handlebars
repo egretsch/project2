@@ -13,13 +13,12 @@
     <div class="col s4 m2 l2 hoverable">Other</div>
     <div class="col s4 m2 l2 hoverable">For Fun</div>
   </div>
-
   <div class="row topRow">
     {{#if two}}
     <div id="sectionOne" class="col s12 m4 l5">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{items.id}}">
         <h5 class='nytTitle'>{{items.title}}</h5>
-        <img src="{{items.img}}" width="100%" height="300px">
+        <img src="{{items.img}}" width="100%" height="250px">
         <p class='nytText'>{{items.snippet}}</p>
         <p class='nytAuthor'>By {{items.author}}</p>
       </a>
@@ -27,7 +26,7 @@
     <div id="sectionTwo" class="col s12 m4 l3">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{two.id}}">
         <h5 class='nytTitle'>{{two.title}}</h5>
-        <img class='nytImage' src="{{two.img}}" width="100%" height="250px">
+        <img class='nytImage' src="{{two.img}}" width="100%" height="200px">
         <p class='nytText'>{{two.snippet}}</p>
         <p class='nytAuthor'>By {{two.author}}</p>
       </a>
@@ -35,26 +34,26 @@
     <div id="sectionThree" class="col s12 m4 l4">
       <a id='articleLink' class='hoverable posts-articles-individual' data="{{three.id}}">
         <h5 class='nytTitle'>{{three.title}}</h5>
-        <img src="{{three.img}}" width="100%" height="300px">
+        <img src="{{three.img}}" width="100%" height="250px">
         <p class='nytText'>{{three.snippet}}</p>
         <p class='nytAuthor'>By {{three.author}}</p>
       </a>
     </div>
     {{/if}}
+    <div class="row"></div>
     <div class="container">
-      <div class="row spacer">
+      <div class="row">
         {{#each spacerArticles}}
-        <div class="col s12 m6 l3" style="margin-right: 2.5px; margin-left: 2.5px;">
+        <div class="other">
           <a id='articleLink' class='hoverable posts-articles-individual' data="{{id}}">
-            <h5 class='nytTitle'>{{title}}</h5>
-            <img src="{{img}}" width="100%" height="200px">
-            <p class='nytText'>{{snippet}}</p>
-            <p class='nytAuthor'>By {{author}}</p>
+            <h5>{{title}}</h5>
+            <img src="{{img}}" width="100%" height="33%">
+            <p>{{snippet}}</p>
+            <p>By {{author}}</p>
           </a>
         </div>
-        <div class="col s0 m0 l1"></div>
+        {{!-- <div class="col s0 m0 l1"></div> --}}
         {{/each}}
-        <div class="col s12 m6 l3 classy" style="height: 200px; width: 200px; background: black; color: white;">Paradigm</div>
       </div>
     </div>
     <div class="row"></div>
