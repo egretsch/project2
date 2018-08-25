@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.use("/", articleRoutes);
+app.use(articleRoutes);
 
 
 

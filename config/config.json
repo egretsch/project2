@@ -2,19 +2,13 @@
   "development": {
     "username": "root",
     "password": "password",
-    "database": "paradigmtest",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": "password",
-    "database": "paradigmtest",
+    "database": "paradigm_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
+    "database": "nf3wbcd2vd4yqerj",
     "dialect": "mysql"
   }
 }
