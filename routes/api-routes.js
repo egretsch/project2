@@ -2,13 +2,13 @@ require("dotenv").config();
 const express = require('express');
 const request = require('request');
 var cheerio = require('cheerio');
-const router = express.Router();
+var router = express.Router();
 var db = require("../models/index.js");
 let keys = require("../keys.js");
 var bcrypt = require('bcrypt');
 let obj;
 
-
+// module.exports = function(app) {
 router.get("/api/paradigm", function (req, res) {
     db.Article.findAll({})
         .then(function (response) {
@@ -377,5 +377,5 @@ router.post("/api/validate", function (req, res) {
 
     });
 });
-
+// };
 module.exports = router;
