@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Bookmark = sequelize.define("Bookmark", {
+    let Bookmark = sequelize.define("Bookmark", {
       title: {
         type: DataTypes.STRING,
         allowNull: false,
