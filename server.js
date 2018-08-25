@@ -17,7 +17,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(favicon(__dirname + "/public/favicon.ico"));
 
 
-var PORT = process.env.JAWSDB_URL || 8080;
+var PORT = process.env.PORT || 8080;
 // Start our server so that it can begin listening to client requests.
 db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function() {
