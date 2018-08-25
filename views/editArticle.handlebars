@@ -1,0 +1,104 @@
+<div class="row catagories">
+  <a href="/posts">
+    <div class="col s2 x link offset-s4 bLink hoverable">Manage Articles</div>
+  </a>
+  <a href="/bookmarks">
+    <div class="col s2 x link bLink hoverable">Manage Bookmarks</div>
+  </a>
+</div>
+
+
+
+
+<div class="row">
+  <div class="col s4"></div>
+  <div id="postingHeader" class="col s4 classy">Edit Article</div>
+  <div class="col s4"></div>
+</div>
+
+
+<div class="row">
+  <div class="col s4"></div>
+  <div class="input-field col s4">
+    <input value="{{data.title}}" id="input_text" class="postingArticleTitle" type="text" data-length="120">
+    <label for="input_text">Article Title</label>
+  </div>
+  <div class="col s4"></div>
+</div>
+
+<div class="row">
+  <div class="col s4"></div>
+  <div class="input-field col s4">
+    <input value="{{data.snippet}}" id="input_text" class="postingArticleSnippet" type="text" data-length="120">
+    <label for="input_text">Article Snippet</label>
+  </div>
+  <div class="col s4"></div>
+</div>
+
+
+<div class="row">
+  <div class="col s4"></div>
+  <div class="input-field col s4">
+    <input value="{{data.author}}" id="input_text" class="postingArticleAuthor" type="text" data-length="60">
+    <label for="input_text">Your Author Name</label>
+  </div>
+  <div class="col s4"></div>
+</div>
+
+<div class="row">
+  <div class="col s2"></div>
+  <div class="input-field col s8">
+    <input value="{{data.img}}" id="first_name2" type="text" class="postingArticleImg">
+    <label class="active" for="first_name2">Link For An Article Image</label>
+  </div>
+  <div class="col s2"></div>
+</div>
+
+<div class="row">
+  <div class="col s1"></div>
+  <form class="col s10">
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="textarea1" class="postArticleBody materialize-textarea">{{data.body}}</textarea>
+        <label for="textarea1">Write something worth reading</label>
+      </div>
+    </div>
+  </form>
+  <div class="col s1"></div>
+</div>
+
+<div class="center-align">
+
+  <a data="{{data.id}}" class="waves-effect waves-light btn-large edit-button posts">Update</a>
+</div>
+
+<script>
+  $('.edit-button').on("click", function () {
+
+    let postingArticleTitle = $('.postingArticleTitle').val();
+    let postingArticleSnippet = $('.postingArticleSnippet').val();
+    let postingArticleAuthor = $('.postingArticleAuthor').val();
+    let postingArticleImg = $('.postingArticleImg').val();
+    let postingArticleBody = $('.postArticleBody').val();
+    let articleID = $(this).attr("data");
+
+    let obj = {
+      title: postingArticleTitle,
+      snippet: postingArticleSnippet,
+      author: postingArticleAuthor,
+      img: postingArticleImg,
+      body: postingArticleBody
+    }
+
+    $.ajax({
+      method: "PUT",
+      url: "/article/update/"+articleID,
+      data: obj
+    })
+      .then(function() {
+      });
+});
+
+
+
+</script>

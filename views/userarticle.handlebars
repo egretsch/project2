@@ -1,0 +1,34 @@
+
+<button onclick="M.toast({html: 'Bookmark Saved!'})" id="bookmarkThang" class="material-icons hoverable book">
+    book
+</button>
+
+
+<div id="user-article-wrapper" class="row">
+<div class="articleWrapper">
+    <div class="row">
+        <div class="col s4"></div>
+        <img class="col s4" src="{{data.img}}" id="articleImg">
+        <div class="col s4"></div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <h1 class="col s8" id="articleHeader">{{data.title}}</h1>
+        <div class="col s2"></div>
+    </div>
+    <div class="row">
+        <div class="col s8"></div>
+        <p class="col s2" id="author">{{data.author}}</p>
+        <div class="col s2"></div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s8 articleText">{{data.body}}</div>
+        <div class="col s2"></div>
+    </div>
+</div>
+
+</div>
+
+
+<script src="/assets/js/userArticleLogic.js"></script>

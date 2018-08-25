@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+html,
+body{
+    color: rgb(2, 0, 0);
+    font-family: 'Ubuntu', 'Times New Roman', Times, serif;
+    /* background-image: url("https://pixabay.com/get/eb35b80f29f6073ed1534705fb094f93e477e3d41eac104496f5c17aa1e8b5ba/ribbon-2090126_1920.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; */
+}
+
+.link
+{
+   color: black;
+   text-decoration: none; 
+   background-color: none;
+}
+
+.x {
+   -webkit-user-select: none;
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none; 
+    outline: none;
+  }
+
+.classy{
+  font-family: 'Abril Fatface', 'cursive';
+  }
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+  }
+
+/* Nav Bar*/
+
+.mainHeaderWrapper{
+  width: 100%;
+  height: 80px;
+  }
+  
+#mainPageCenterText{
+  font-weight: bolder;
+  font-size: 30px;
+  width: 200px;
+  height: 60px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 80px;  
+  }
+
+ #userButton{
+  background: url("../images/user.png");
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  float: right;
+  margin-right: 30px;
+  margin-top: 23px; 
+  }
+ /* Nav Bar*/
+
+.navBar{
+  width: 100%;
+  height: 50px;
+  position: sticky;
+  top: 0px;
+  background: rgba(0, 0, 0, .9);
+  /* border-bottom: 3px solid rgba(141, 141, 141, 0.842); */
+}
+
+.navBarTextWrapper{
+  margin: 0 auto;
+  width: 95px;
+  height: 40px;
+}
+
+#navBarText1{
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 60px;
+  text-align: center;
+  color: white;
+}
+  /* Nav Bar*/
+
+
+#whiteSpace{
+    width: 100%;
+    height: 300px;
+}
+
+.articleText{
+  line-height: 26px;
+
+}
+
+#postingHeader{
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#bookmarkThang{
+  font-size: 50px;
+  position: sticky;
+  top: 350px;
+  margin-left: 3%;
+  background:none!important;
+  color:inherit;
+  border-radius: 30%;
+  border: 2px solid rgba(0, 0, 0, 0.637);
+  padding: 8px 8px 8px 8px;
+  /*border is optional*/
+  cursor: pointer;
+  opacity: 0.2;
+  transition: all 0.4s;
+}
+
+#bookmarkThang:hover{
+  opacity: 1;
+}
+
+
+@media only screen and (max-width: 965px) {
+  #bookmarkThang {
+      margin-left: 2%;
+      font-size: 50px;
+
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  #bookmarkThang {
+      margin-left: 1%;
+      font-size: 50px;
+
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  #bookmarkThang {
+      margin-top: 50px;
+      margin-left: 42%;
+      font-size: 60px;
+      position: inherit;
+  }
+}
+
+
+#user-article-wrapper{
+  margin: 0 auto;
+}
+
+/* CHANCE CSS BELOW */
+
+/* Shadow */
+
+.navBar{
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  }
+.navBar:before, .navBar:after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  -webkit-box-shadow:0 0 150px rgba(0,0,0,0.3);
+  -moz-box-shadow:0 0 150px rgba(0,0,0,0.3);
+  box-shadow:0 0 150px rgba(0, 0, 0, 0.3);
+  top:0;
+  bottom:0;
+  left:10px;
+  right:10px;
+  -moz-border-radius:100px / 10px;
+  border-radius:100px / 10px;
+  }
+.navBar:after{
+  right:10px;
+  left:auto;
+  -webkit-transform:skew(8deg) rotate(3deg);
+  -moz-transform:skew(8deg) rotate(3deg);
+  -ms-transform:skew(8deg) rotate(3deg);
+  -o-transform:skew(8deg) rotate(3deg);
+  transform:skew(8deg) rotate(3deg);
+  }
+
+/* Nav Bar Above*/
+
+.row{
+  margin-top: 25px;
+  }
+.catagories{
+  /* border-top: 1px solid black; */
+}
+
+.l2{
+  text-align: center;
+  font-size: 15px;
+  border-bottom: 1px solid black;
+  }
+
+.l2:hover{
+  background:rgba(0, 0, 0, .9);
+  color: white;
+  }
+
+.nytImage,
+.nytTitle,
+.nytText,
+.nytAuthor{
+  color:black;
+  width:100%;
+  }
+
+.bLink{
+  text-align: center;
+  font-size: 15px;
+  border-bottom: 1px solid black;
+}
+.bLink:hover{
+  background:rgba(0, 0, 0, .9);
+  color: white;
+  }
+.topRow{
+  margin-bottom: 100px;
+}
+
+
+
+/* CHANCE CSS ABOVE */
