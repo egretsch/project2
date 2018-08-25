@@ -11,6 +11,7 @@ var methodOverride = require('method-override');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(articleRoutes);
@@ -20,7 +21,7 @@ app.use(articleRoutes);
 
 
 
-var PORT = process.env.PORT;
+var PORT = process.env.PORT || 8080;
 // Start our server so that it can begin listening to client requests.
 db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
