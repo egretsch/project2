@@ -1,22 +1,22 @@
 require("dotenv").config();
-const express = require('express');
+// const express = require('express');
 const request = require('request');
 var cheerio = require('cheerio');
-var router = express.Router();
+// var router = express.Router();
 var db = require("../models/index.js");
 let keys = require("../keys.js");
 var bcrypt = require('bcrypt');
 let obj;
 
-// module.exports = function(app) {
-router.get("/api/paradigm", function (req, res) {
+module.exports = function(app) {
+app.get("/api/paradigm", function (req, res) {
     db.Article.findAll({})
         .then(function (response) {
             res.send(response);
         });
 });
 
-router.get('/', function (req, res) {
+app.get('/', function (req, res) {
     db.Article.findAll()
         .then(function (response) {
             if (response.length > 2) {
@@ -123,11 +123,11 @@ router.get('/', function (req, res) {
         });
 });
 
-router.get('/posting', function (req, res) {
+app.get('/posting', function (req, res) {
     res.render("posting");
 });
 
-router.get('/posts/:id', function (req, res) {
+app.get('/posts/:id', function (req, res) {
     db.Article.findAll({
         where: {
             UserInfoId: req.params.id
@@ -140,7 +140,7 @@ router.get('/posts/:id', function (req, res) {
 });
 
 
-router.get('/bookmarks/:id', function (req, res) {
+app.get('/bookmarks/:id', function (req, res) {
     console.log(req.body.currentURL);
     db.Bookmark.findAll({
         where: {
@@ -153,7 +153,7 @@ router.get('/bookmarks/:id', function (req, res) {
     });
 });
 
-router.post('/bookmarks', function (req, res){
+app.post('/bookmarks', function (req, res){
     let UserInfoIdReturned = parseInt(req.body.localStoragePosts);
     let parsedUserId = req.body.currentURL.split('/')[4];
     let link = req.body.currentURL;
@@ -175,11 +175,11 @@ router.post('/bookmarks', function (req, res){
     });
 });
 
-router.get('/userarticle', function (req, res) {
+app.get('/userarticle', function (req, res) {
     res.render("userarticle");
 });
 
-router.get('/edit/:id', function (req, res) {
+app.get('/edit/:id', function (req, res) {
 
     db.Article.findAll({
         where: {
@@ -194,7 +194,7 @@ router.get('/edit/:id', function (req, res) {
 
 });
 
-router.get('/userarticle/:id', function (req, res) {
+app.get('/userarticle/:id', function (req, res) {
     db.Article.findAll({
         where: {
             id: req.params.id
@@ -209,12 +209,12 @@ router.get('/userarticle/:id', function (req, res) {
 
 });
 
-router.post("/article", function (req, res) {
+app.post("/article", function (req, res) {
     console.log(req.body);
     obj = req.body;
 });
 
-router.get('/article/:title', function (req, res) {
+app.get('/article/:title', function (req, res) {
     // console.log(req.body);
     // res.send(req.body);
     request(obj.apiUrl, function (err, resp, body) {
@@ -255,7 +255,7 @@ router.get('/article/:title', function (req, res) {
     });
 });
 
-router.post("/articles/add", function (req, res) {
+app.post("/articles/add", function (req, res) {
 
     db.Article.create({
         title: req.body.title,
@@ -270,7 +270,7 @@ router.post("/articles/add", function (req, res) {
     })
 });
 
-router.delete("/article/delete/:id", function (req, res) {
+app.delete("/article/delete/:id", function (req, res) {
     db.Article.destroy({
         where: {
             id: req.params.id
@@ -281,7 +281,7 @@ router.delete("/article/delete/:id", function (req, res) {
         });
 });
 
-router.delete("/bookmarks/delete/:id", function (req, res) {
+app.delete("/bookmarks/delete/:id", function (req, res) {
     db.Bookmark.destroy({
         where: {
             id: req.params.id
@@ -293,7 +293,7 @@ router.delete("/bookmarks/delete/:id", function (req, res) {
 });
 
 
-router.put("/article/update/:id", function (req, res) {
+app.put("/article/update/:id", function (req, res) {
     console.log(req.body.body)
     db.Article.update(req.body,
         {
@@ -306,11 +306,11 @@ router.put("/article/update/:id", function (req, res) {
         });
 });
 
-router.get('/usercreatepage', function (req, res) {
+app.get('/usercreatepage', function (req, res) {
     res.render("usercreatepage");
 });
 
-router.get('/userloginpage', function (req, res) {
+app.get('/userloginpage', function (req, res) {
     res.render("userloginpage");
 });
 
@@ -318,7 +318,7 @@ router.get('/userloginpage', function (req, res) {
 
 // Create all our routes and set up logic within those routes where required.
 
-router.post("/api/addUser", function (req, res) {
+app.post("/api/addUser", function (req, res) {
     // console.log(req.body);
 
     const saltRounds = 10;
@@ -338,7 +338,7 @@ router.post("/api/addUser", function (req, res) {
 
 
 
-router.post("/api/validate", function (req, res) {
+app.post("/api/validate", function (req, res) {
     db.UserInfo.findOne({
         where: {
             email: req.body.email
@@ -377,5 +377,5 @@ router.post("/api/validate", function (req, res) {
 
     });
 });
-// };
-module.exports = router;
+};
+// module.exports = app;
