@@ -13,17 +13,14 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.use(articleRoutes);
-
-
-app.use("/", routes);
+app.use("/", articleRoutes);
 
 
 
 var PORT = process.env.PORT || 8080;
 // Start our server so that it can begin listening to client requests.
-// db.sequelize.sync({ force: false }).then(function () {
+db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function() {
     console.log("Server listening on: http://localhost:" + PORT);
   });
-// });
+});
