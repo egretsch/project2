@@ -1,7 +1,7 @@
 {
   "name": "Paradigm",
   "version": "1.0.0",
-  "description": "A in progress blogging / aggregated news web site",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
