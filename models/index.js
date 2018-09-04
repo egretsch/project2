@@ -1,4 +1,5 @@
 'use strict';
+// Allows us to create models in my SQL using seqeulize to create the tables
 
 const fs = require('fs');
 const path = require('path');
