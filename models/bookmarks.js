@@ -1,3 +1,5 @@
+
+// Allows database to be created for bookmarked articles for each user
 module.exports = function(sequelize, DataTypes) {
     let Bookmark = sequelize.define("Bookmark", {
       title: {
