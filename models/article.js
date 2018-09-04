@@ -1,3 +1,5 @@
+// Allows page 2 create a database for articles
+
 module.exports = function(sequelize, DataTypes) {
     let Article = sequelize.define("Article", {
       title: {
