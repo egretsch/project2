@@ -8,14 +8,14 @@ let keys = require("../keys.js");
 let obj;
 
 module.exports = function (app) {
-
+  // Provides a route to get all articles
   app.get("/api/paradigm", function (req, res) {
     db.Article.findAll({})
       .then(function (response) {
         res.send(response);
       });
   });
-
+  // Provides get route for main home page and allows for articles to be brought the main home page
   app.get('/', function (req, res) {
     db.Article.findAll()
       .then(function (response) {
@@ -122,11 +122,11 @@ module.exports = function (app) {
         }
       });
   });
-
+  // Route to get to posting page of articles
   app.get('/posting', function (req, res) {
     res.render("posting");
   });
-
+  // Get a response from the server for all articles that are in the database
   app.get('/posts/:id', function (req, res) {
     db.Article.findAll({
       where: {
@@ -138,7 +138,7 @@ module.exports = function (app) {
       res.render("posts", { items: data });
     });
   });
-
+  // Allows user to retrieve their bookmarks from the database
   app.get('/bookmarks/:id', function (req, res) {
     console.log(req.body.currentURL);
     db.Bookmark.findAll({
@@ -151,7 +151,7 @@ module.exports = function (app) {
       res.render("bookmarks", { items: data });
     });
   });
-
+  // Allows user to post articles to database
   app.post('/bookmarks', function (req, res) {
     let UserInfoIdReturned = parseInt(req.body.localStoragePosts);
     let parsedUserId = req.body.currentURL.split('/')[4];
@@ -173,11 +173,11 @@ module.exports = function (app) {
       });
     });
   });
-
+  // Takes user to user article page
   app.get('/userarticle', function (req, res) {
     res.render("userarticle");
   });
-
+  // Allows for articles to be edited by user
   app.get('/edit/:id', function (req, res) {
 
     db.Article.findAll({
@@ -192,7 +192,7 @@ module.exports = function (app) {
       });
 
   });
-
+  // Gets articles from database that users created
   app.get('/userarticle/:id', function (req, res) {
     db.Article.findAll({
       where: {
@@ -207,12 +207,12 @@ module.exports = function (app) {
       });
 
   });
-
+  // Allows for articles to be posted to database
   app.post("/article", function (req, res) {
     console.log(req.body);
     obj = req.body;
   });
-
+  // Allows for getting articles that were created
   app.get('/article/:title', function (req, res) {
     // console.log(req.body);
     // res.send(req.body);
@@ -253,7 +253,7 @@ module.exports = function (app) {
 
     });
   });
-
+  // Posts article 2 database
   app.post("/articles/add", function (req, res) {
 
     db.Article.create({
@@ -268,7 +268,7 @@ module.exports = function (app) {
       res.send(dbArticle);
     })
   });
-
+  // Allows user to delete created articles
   app.delete("/article/delete/:id", function (req, res) {
     db.Article.destroy({
       where: {
@@ -279,7 +279,7 @@ module.exports = function (app) {
         res.json(dbPost);
       });
   });
-
+  // Allows user to delete bookmark articles
   app.delete("/bookmarks/delete/:id", function (req, res) {
     db.Bookmark.destroy({
       where: {
@@ -291,7 +291,7 @@ module.exports = function (app) {
       });
   });
 
-
+  // Updates any edits to the user article
   app.put("/article/update/:id", function (req, res) {
     console.log(req.body.body)
     db.Article.update(req.body,
@@ -304,18 +304,18 @@ module.exports = function (app) {
         res.json(dbPost);
       });
   });
-
+  // Brings the create user page route
   app.get('/usercreatepage', function (req, res) {
     res.render("usercreatepage");
   });
-
+  // Creates the main login page for the user
   app.get('/userloginpage', function (req, res) {
     res.render("userloginpage");
   });
 
   ////////////Ed and Tyler's Logic/////////////////////////////////////////////////////////////////////////////////
 
-  // Create all our routes and set up logic within those routes where required.
+  // When user creates their login information is entered into the database and then the password is also hashed
 
   app.post("/api/addUser", function (req, res) {
     // console.log(req.body);
@@ -336,7 +336,7 @@ module.exports = function (app) {
   });
 
 
-
+  //  Create user login cookie and verifies the user's authentication
   app.post("/api/validate", function (req, res) {
     db.UserInfo.findOne({
       where: {
