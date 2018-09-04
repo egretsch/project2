@@ -1,3 +1,5 @@
+
+// Allows user info table to be created when user input their data
 module.exports = function (sequelize, DataTypes) {
   let UserInfo = sequelize.define("UserInfo", { 
     email: {
